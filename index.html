@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+
+	<head>
+		<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+		<meta charset='UTF-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<title>Simple Writer</title>
+		<link rel="stylesheet" href="font/css/all.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>
+		<script>
+			window.onload=function(){
+				setTimeout(function() {
+					$('.loading').hide();
+					$('.main').show();
+				}, 2000);
+			}
+		</script>
+		<div class="loading">
+			<h1></h1>
+		</div>
+		<noscript>你需要Javascript才运行此网页程序！You need Javascript to run this Website App!</noscript>
+		<div class="main" style="display: none;">
+			<div class="topbar">
+				<p class="links logo">Simple Writer</p>
+				<p class="title">关于Simple Writer</p>
+				<div class="addons">
+					<ul>
+						<li title="菜单"><span class="bi bi-list"></span></li>
+						<li title="全屏"><span class="bi bi-arrows-angle-expand"></span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="menu">
+				<div class="mr">
+					<ul>
+						<li data-group="group_editor">编辑...</li>
+						<li>保存</li>
+						<li>文件</li>
+						<li>选项</li>
+						<li>另存为</li>
+					</ul>
+				</div>
+				<div class="group_editor">
+					<ul>
+						<li>添加一节到上方</li>
+						<li>添加一节到下方</li>
+						<li>添加引用域到上方</li>
+						<li>添加引用域到下方</li>
+						<li>删除元素</li>
+						<li>删除该节</li>
+					</ul>
+				</div>
+			</div>
+			<div class="left_bar">
+				<div class="page setting">
+					<h1><span class="fad fa-tools"></span> 选项</h1>
+					<h2><span class="fad fa-tshirt"></span> 外观</h2>
+					<ul>
+						<li class="theme"><p class="title">主题</p><div class="show">亮</div></li>
+						<li class="maincolor"><p class="title">主题色</p><div class="show">默认</div></li>
+						<li class="fontfamily"><p class="title">字体</p><div class="show">sans-serif</div></li>
+					</ul>
+					<h2><span class="fad fa-sync"></span> 备份与同步</h2>
+					<ul>
+						<li class="go daoru">从文件导入数据</li>
+						<li class="go daochu">导出数据到文件</li>
+					</ul>
+					<h2><span class="fad fa-address-card"></span> 关于我们</h2>
+					<ul>
+						<li class="go about">关于我们</li>
+						<li class="go help">帮助</li>
+					</ul>
+				</div>
+			</div>
+			<div class="editor">
+				<h1>Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。</h1>
+				<h2>By Clear Writer</h2>
+				<div class="xjie mr">
+				</div>
+				<div class="xjie">
+					<h3>为什么编写 Clear Writer</h3>
+					<p>我开了我自己的博客之后，一直苦于 Windows 端没有我喜欢的 Markdown 编辑器。</p>
+					<blockquote>其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。</blockquote>
+					<p>Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个经济实力去买正版。我也不打算用盗版。我找到了一个类似的软件，叫做 4Me 写字板。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大……<br>
+但这却给了我一个启发：为什么不自己动手试着用 CodeMirror 制作一个 Markdown 编辑器呢？<br>
+于是我征求了原作者同意之后，借着这次因新冠疫情宅家的时间，尝试自己以 4Me 写字板为蓝本，制作自己的写作工具。于是我做出了这个 Markdown 编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人理清自己的思维。<br>
+另外，Clear Writer 的一个很重要的一点是它支持实时 Markdown 语法。很多的所谓实时 Markdown，我都不是很喜欢——因为它们会把 Markdown 格式标记隐去。我不喜欢这样，我喜欢让格式牢牢掌控在使用者的手里。</p>
+				</div>
+				<div class="xjie">
+					<h3>Clear Writer 的特点</h3>
+					<p> - 全自动保存；<br>
+ - 所见即所得的实时 MarkDown，以及标题悬挂；<br>
+ - 支持亮色 / 暗色模式；<br>
+ - 漂亮的隐藏式滚动条；<br>
+ - 支持简体中文 / 繁体中文 / 英文三种语言；<br>
+ - 支持开启 / 关闭行号；<br>
+ - 高亮当前段落；<br>
+ - 漂亮的光标闪动和跳动效果；<br>
+ - 界面自适应；<br>
+ - 内容全部在本地缓存，完全隐私保护；<br>
+ - 支持导出 .txt、.md、.doc、.html、带 CSS 的 html 5 种格式；<br>
+ - 平滑滚动；<br>
+ - 可让你立即进入状态的“闪念”功能（v1.7+）。</p>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="cover"></div>
+	</body>
+	
+	<script src="script.js"></script>
+</html>
