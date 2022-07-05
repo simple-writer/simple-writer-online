@@ -39,6 +39,7 @@ function queryTexts() {
     for (var i in textobj) {
         $('.dialog .dialog-show ul.texts').append(`<li class="text"><p>${i}</p><div><span class="del" title="删除">⛔</span><span class="rename" title="重命名">📝</span></div></li>`)
     }
+    setFilesEvent();
 }
 // 设置文件目录事件
 function setFilesEvent() {
@@ -92,7 +93,18 @@ function setFilesEvent() {
             console.log($(this).parents('li.text'));
             localStorage.setItem('texts', JSON.stringify(b));
             queryTexts();
-            setFilesEvent();
+        }
+    });
+    $('.dialog .dialog-show .files ul.texts li span.rename').click(function() {
+        var names = prompt('请输入新名字');
+        if (names == '') {
+            alert('不得为空');
+        } else {
+            var b = JSON.parse(localStorage.getItem('texts'));
+            b[names] = b[$(this).parents('li.text').find('p').html()];
+            delete b[$(this).parents('li.text').find('p').html()];
+            localStorage.setItem('texts', JSON.stringify(b));
+            queryTexts();
         }
     });
     $('.dialog .dialog-show .lin_save ul li.txt').click(function() {
