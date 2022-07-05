@@ -1,118 +1,244 @@
 <!DOCTYPE html>
 <html lang='zh-cn'>
 
-	<head>
-		<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
-		<meta charset='UTF-8'>
-		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-		<title>Simple Writer</title>
-		<link rel="stylesheet" href="font/css/all.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-		<link rel="stylesheet" href="style.css">
-	</head>
+<head>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Simple Writer</title>
+    <link rel="stylesheet" href="font/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="icomoon.css">
+</head>
 
-	<body>
-		<script>
-			window.onload=function(){
-				setTimeout(function() {
-					$('.loading').hide();
-					$('.main').show();
-				}, 2000);
-			}
-		</script>
-		<div class="loading">
-			<h1></h1>
-		</div>
-		<noscript>你需要Javascript才运行此网页程序！You need Javascript to run this Website App!</noscript>
-		<div class="main" style="display: none;">
-			<div class="topbar">
-				<p class="links logo">Simple Writer</p>
-				<p class="title">关于Simple Writer</p>
-				<div class="addons">
-					<ul>
-						<li title="菜单"><span class="bi bi-list"></span></li>
-						<li title="全屏"><span class="bi bi-arrows-angle-expand"></span></li>
-					</ul>
-				</div>
-			</div>
-			<div class="menu">
-				<div class="mr">
-					<ul>
-						<li data-group="group_editor">编辑...</li>
-						<li>保存</li>
-						<li>文件</li>
-						<li>选项</li>
-						<li>另存为</li>
-					</ul>
-				</div>
-				<div class="group_editor">
-					<ul>
-						<li>添加一节到上方</li>
-						<li>添加一节到下方</li>
-						<li>添加引用域到上方</li>
-						<li>添加引用域到下方</li>
-						<li>删除元素</li>
-						<li>删除该节</li>
-					</ul>
-				</div>
-			</div>
-			<div class="left_bar">
-				<div class="page setting">
-					<h1><span class="fad fa-tools"></span> 选项</h1>
-					<h2><span class="fad fa-tshirt"></span> 外观</h2>
-					<ul>
-						<li class="theme"><p class="title">主题</p><div class="show">亮</div></li>
-						<li class="maincolor"><p class="title">主题色</p><div class="show">默认</div></li>
-						<li class="fontfamily"><p class="title">字体</p><div class="show">sans-serif</div></li>
-					</ul>
-					<h2><span class="fad fa-sync"></span> 备份与同步</h2>
-					<ul>
-						<li class="go daoru">从文件导入数据</li>
-						<li class="go daochu">导出数据到文件</li>
-					</ul>
-					<h2><span class="fad fa-address-card"></span> 关于我们</h2>
-					<ul>
-						<li class="go about">关于我们</li>
-						<li class="go help">帮助</li>
-					</ul>
-				</div>
-			</div>
-			<div class="editor">
-				<h1>Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。</h1>
-				<h2>By Clear Writer</h2>
-				<div class="xjie mr">
-				</div>
-				<div class="xjie">
-					<h3>为什么编写 Clear Writer</h3>
-					<p>我开了我自己的博客之后，一直苦于 Windows 端没有我喜欢的 Markdown 编辑器。</p>
-					<blockquote>其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。</blockquote>
-					<p>Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个经济实力去买正版。我也不打算用盗版。我找到了一个类似的软件，叫做 4Me 写字板。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大……<br>
-但这却给了我一个启发：为什么不自己动手试着用 CodeMirror 制作一个 Markdown 编辑器呢？<br>
-于是我征求了原作者同意之后，借着这次因新冠疫情宅家的时间，尝试自己以 4Me 写字板为蓝本，制作自己的写作工具。于是我做出了这个 Markdown 编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人理清自己的思维。<br>
-另外，Clear Writer 的一个很重要的一点是它支持实时 Markdown 语法。很多的所谓实时 Markdown，我都不是很喜欢——因为它们会把 Markdown 格式标记隐去。我不喜欢这样，我喜欢让格式牢牢掌控在使用者的手里。</p>
-				</div>
-				<div class="xjie">
-					<h3>Clear Writer 的特点</h3>
-					<p> - 全自动保存；<br>
- - 所见即所得的实时 MarkDown，以及标题悬挂；<br>
- - 支持亮色 / 暗色模式；<br>
- - 漂亮的隐藏式滚动条；<br>
- - 支持简体中文 / 繁体中文 / 英文三种语言；<br>
- - 支持开启 / 关闭行号；<br>
- - 高亮当前段落；<br>
- - 漂亮的光标闪动和跳动效果；<br>
- - 界面自适应；<br>
- - 内容全部在本地缓存，完全隐私保护；<br>
- - 支持导出 .txt、.md、.doc、.html、带 CSS 的 html 5 种格式；<br>
- - 平滑滚动；<br>
- - 可让你立即进入状态的“闪念”功能（v1.7+）。</p>
-				</div>
-			</div>	
-		</div>
-		
-		<div class="cover"></div>
-	</body>
-	
-	<script src="script.js"></script>
+<body>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                $('.loading').hide();
+                $('.main').show();
+                startFunction();
+            }, 2000);
+        }
+    </script>
+    <div class="loading">
+        <h1></h1>
+    </div>
+    <noscript>
+			<h1 style="width: 100%;height: 100vh;font-size: 60px;display: flex;justify-content: center;align-items: center;position: absolute;top: 0; background-color:#fff;">
+				你需要Javascript才能运行此网页程序！<br>You need Javascript to run this Website App!
+				</h1>
+		</noscript>
+    <div class="main" style="display: none;">
+        <div class="topbar">
+            <p class="links logo">Simple Writer</p>
+            <p class="title"></p>
+
+            <div class="addons">
+                <ul>
+                    <li title="菜单"><span class="icon-list"></span></li>
+                    <li title="全屏"><span class="icon-arrows-fullscreen"></span></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="menu">
+            <div class="mr">
+                <ul>
+                    <li data-group="group_editor">编辑...</li>
+                    <li class="save">保存</li>
+                    <li class="files">文件</li>
+                    <li class="setting">选项</li>
+                    <li class="togglemode">打开阅读模式</li>
+                    <li class="lin_save">另存为</li>
+                </ul>
+            </div>
+            <div class="group_editor">
+                <ul>
+                    <li class="addoneup">添加一节到上方</li>
+                    <li class="addonedown">添加一节到下方</li>
+                    <li class="addoneblockquiteup">添加引用域到上方</li>
+                    <li class="addoneblockquitedown">添加引用域到下方</li>
+                    <li class="delthe">删除元素</li>
+                    <li class="deltheone">删除该节</li>
+                </ul>
+            </div>
+        </div>
+        <div class="left_bar">
+            <div class="page setting">
+                <h1><span class="fad fa-tools"></span> 选项</h1>
+                <h2><span class="fad fa-tshirt"></span> 外观</h2>
+                <ul>
+                    <li class="theme">
+                        <p class="title">主题</p>
+                        <div class="show">亮</div>
+                    </li>
+                    <li class="maincolor">
+                        <p class="title">主题色</p>
+                        <div class="show">默认</div>
+                    </li>
+                    <li class="fontfamily">
+                        <p class="title">字体</p>
+                        <div class="show">sans-serif</div>
+                    </li>
+                    <li class="titlemode">
+                        <p class="title">标题栏沉浸</p>
+                        <div class="show">关</div>
+                    </li>
+                </ul>
+                <h2><span class="fad fa-sync"></span> 备份与同步</h2>
+                <ul>
+                    <li class="go daoru">从文件导入数据<span class='fal fa-angle-right'></span></li>
+                    <li class="go daochu">导出数据到文件<span class='fal fa-angle-right'></span></li>
+                </ul>
+                <h2><span class="fad fa-address-card"></span> 关于我们</h2>
+                <ul>
+                    <li class="go about">关于我们<span class='fal fa-angle-right'></span></li>
+                    <li class="go help">帮助<span class='fal fa-angle-right'></span></li>
+                </ul>
+            </div>
+            <div class="page about">
+                <div class="read">
+                    <div class="h1">欢迎使用Simple Writer，它是一个简洁的写作工具</div>
+                    <div class="h2">By 陈思全</div>
+                    <div class="xjie mr"></div>
+                    <div class="xjie">
+                        <div class="h3">为什么编写Simple Writer?</div>
+                        <div class="p">大家应该用过Word 文档吧，在那里写文章十分的不舒服。总是要切换各种各样的东西，写作的灵感完全没了。。。</div>
+                        <div class="blockquote">其实写作并不需要很强大的工具，而是一个不易让人分心的环境。</div>
+                        <div class="p">我就想了想，为什么不自己动手做一个更简洁的写作工具呢？
+                            <div>于是，我就趁着暑假空闲时间，利用我自己学到的前端知识，编写了Simple Writer。</div>
+                        </div>
+                    </div>
+                    <div class="xjie">
+                        <div class="h3">Simple Writer的特点</div>
+                        <div class="p">- 全自动保存。
+                            <div>- 快捷键全覆盖，几乎所有功能都有对应的快捷键。</div>
+                            <div>- 灵感模式，不放过任何一个在脑海中一闪而过的灵感。</div>
+                            <div>- 亮/暗色模式，不让灵感局限于时间。</div>
+                            <div>- 沉浸式状态栏+全屏模式，让你专注于写作。</div>
+                            <div>- 支持另存为多种格式，TXT、MarkDown、DOC、HTML都不在话下。</div>
+                            <div>- 完全本地保存，绝对隐私保护。</div>
+                            <div>- 支持数据导入导出，换台设备也不怕。</div>
+                        </div>
+                    </div>
+                    <div class="xjie">
+                        <div class="h3">使用技巧</div>
+                        <div class="p">- Simple Writer 正常情况下3分钟保存一次，你也可以`Ctrl+S`保存
+                            <div>- Ctrl+Alt+S另存为</div>
+                            <div>- Ctrl+Shift+S打开设置</div>
+                            <div>- Ctrl+H打开文件目录</div>
+                            <div>- Ctrl+Alt+Enter和Ctrl+Enter向上下添加一个小节</div>
+                            <div>- Ctrl+Alt+Q和Ctrl+Q向上下添加一个引用部分<br></div>
+                            <div>- Delete 删除本编辑区域（慎按，无法撤回）</div>
+                            <div>- Ctrl+Delete 删除本编辑区域所在的小节<span>（慎按</span><span>，无法撤回</span><span>）</span></div>
+                            <div><span>- 你也可以在右上角菜单上实现以上功能</span></div>
+                        </div>
+                    </div>
+                    <div class="xjie">
+                        <div class="h3">Simple Writer 的诞生离不开：</div>
+                        <div class="p">- jQuery
+                            <div>- Bootstrap Icons 和Font Awesome和IconMoon</div>
+                            <div>- Github Pages</div>
+                            <div>- Clear Writer 的少部分样式</div>
+                            <div>*注：由于本人实在没有什么设计天赋，所以，<span>少部分样式我参考了Clear Writer，它是一个很优秀的MarkDown写作工具（clearwriter.gitee.io）</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page help">
+                <div class="read">
+                    <div class="h1">Simple Writer 帮助</div>
+                    <div class="h2">By 陈思全</div>
+                    <div class="xjie mr"></div>
+                    <div class="xjie">
+                        <div class="h3">关于编辑器的帮助</div>
+                        <div class="p">Q:如何创建新的小节？
+                            <div>A:Ctrl+（Alt+）Enter或右上角菜单-&gt;编辑-&gt;添加一节到上/下方，详情请见关于我们-&gt;使用技巧</div>
+                            <div>Q:如何创建新的引用部分？
+                                <div>A:Ctrl+（Alt+）Enter或右上角菜单-&gt;编辑-&gt;添加引用域到上/下方，详情请见关于我们-&gt;使用技巧</div>
+                                <div>Q:如何切换输入域？</div>
+                                <div>A:`Tab`或鼠标（手指）</div>
+                                <div>Q:每次新建文档，都会有一个默认的文字域，我不想要它，只要小节</div>
+                                <div>A:你可以在文字域那里按Ctrl+Enter，然后确定你不需要它，再把它Delete删掉（不可撤销）</div>
+                                <div>Q:我不小心删了默认的<span>文字域怎么办？</span></div>
+                                <div><span>A:在副标题处Ctrl+Q向下新建一个引用部分，它会在后面自动跟一个文字域，然后再把新建的引用部分删掉。</span></div>
+                                <div>如果你是在灵感模式下误删的，请重新开始!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="xjie">
+                        <div class="h3">关于文件的帮助</div>
+                        <div class="p">Q:如何让灵感模式下的文件添加标题和副标题？
+                            <div>A:对不起，灵感模式是不能添加标题和副标题的。</div>
+                            <div>Q:另存为上面的格式都看不懂，该选哪个？</div>
+                            <div>A:按需选择，推荐选择DOC（Word 文档）和HTML（既可以用浏览器打开，也可以用Word文档打开）</div>
+                        </div>
+                    </div>
+                    <div class="xjie">
+                        <div class="h3">关于设置的帮助</div>
+                        <div class="p">Q:我可以自定义主题色吗？
+                            <div>A:抱歉，暂时不行。</div>
+                            <div>Q:我是手机端访问的，为什么我切换了字体，结果都一样？</div>
+                            <div>A:Simple Writer使用的是浏览器自带的CSS字体，因为字体文件会影响加载速度，而手机端自带的字体支持普遍较差。</div>
+                        </div>
+                    </div>
+                    <div class="xjie">
+                        <div class="h3">Q:我还有更多的问题？</div>
+                        <div class="p">A:可以加我QQ（2167967783）备注`Simple Writer 用户`，我会在亿会儿后同意，你就可以在QQ上和我反馈问题了。😁😁😁</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="editor">
+
+        </div>
+        <div class="cover"></div>
+        <div class="dialog">
+            <div class="dialog-show">
+                <div class="close icon-x"></div>
+                <div class="page files">
+                    <h1 class="title">选择文件...</h1>
+                    <ul class="cz">
+                        <li class="xinjian icon-plus"> 新建</li>
+                        <li class="linggan icon-plus"> 灵感</li>
+                    </ul>
+                    <ul class="texts"></ul>
+                </div>
+                <div class="page newfile">
+                    <input type="text" id='newfilename'>
+                    <button>新建文档</button>
+                </div>
+                <div class="page lin_save">
+                    <h1 class="title">选择一种格式</h1>
+                    <ul>
+                        <li class='txt'>.TXT</li>
+                        <li class='md'>.MD</li>
+                        <li class='doc'>.DOC</li>
+                        <li class='html'>.HTML</li>
+                        <li class='chtml'>.HTML（带样式）</li>
+                    </ul>
+                </div>
+                <div class="page daoruhelper">
+                    <h1 class="title">导入数据助手</h1>
+                    <input type="file" id="dljson" accept=".json">
+                    <div class="label">
+                        点击我<br>或将文件拖入这里
+                    </div>
+                    <button class="no">取消</button><button class="ok">导入</button>
+                </div>
+            </div>
+
+            <div class="dialog-cover"></div>
+        </div>
+    </div>
+    <div id="saves" style="display:none"></div>
+    <div class="message">
+
+    </div>
+</body>
+
+<script src="script.js"></script>
+
 </html>
