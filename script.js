@@ -883,6 +883,45 @@ $(document).keydown(function(e) {
     } else if (e.ctrlKey && !e.shiftKey && e.altKey && e.key == 's') {
         e.preventDefault();
         startDialog('lin_save', true);
+    } else if (e.ctrlKey && !e.shiftKey && e.altKey && e.key == 'b') {
+        e.preventDefault();
+        var obj = queryNowTextToLinSave();
+        var data = '';
+        // data += '<h1>' + obj['h1'] + '</h1>';
+        // data += '<h3>' + obj['h2'] + '</h3>';
+        for (var i in obj) {
+            if (i == 'h1' || i == 'h2') {} else {
+                for (var i2 = 0; i2 < obj[i].length; i2++) {
+                    for (var i3 in obj[i][i2]) {
+                        if (obj[i][i2][i3] != false) {
+                            if (i3 == 'h') {
+                                data += '<h2>' + obj[i][i2][i3] + '</h2>';
+                            } else if (i3 == 'p') {
+                                var da = '';
+                                for (var i4 = 0; i4 < obj[i][i2][i3].length; i4++) {
+                                    if (i4 + 1 < obj[i][i2][i3].length) {
+                                        da += obj[i][i2][i3][i4] + '<br>';
+
+                                    } else {
+                                        da += obj[i][i2][i3][i4];
+                                    }
+                                }
+                                data += '<p>' + da + '</p>'
+                            } else if (i3 == 'blockquote') {
+                                data += '<blockquote>' + obj[i][i2][i3] + '</blockquote>';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        console.log(`{
+            title: "${obj['h1']}",
+            text: "${data}",
+            date: [${new Date().getFullYear()}, ${new Date().getMonth() + 1}, ${new Date().getDate()}],
+            tag: [''],
+            jj: "${$('.editor').text().substring(0, 100)} ..."
+        }`);
     }
 });
 //设置标题栏事件
@@ -988,34 +1027,53 @@ function queryNowTextToLinSave() {
     var a_xjmr_c = document.querySelectorAll('.editor .xjie.mr>*');
     for (var i = 0; i < a_xjmr_c.length; i++) {
         a_xjmr[a_xjmr.length] = {};
-        a_xjmr[a_xjmr.length - 1][a_xjmr_c[i].className] = a_xjmr_c[i].innerText;
+        if (a_xjmr_c[i].className == 'p') {
+            var sas = a_xjmr_c[i].childNodes;
+            console.log(sas);
+            a_xjmr[a_xjmr.length - 1]['p'] = [];
+
+            for (var i2 = 0; i2 < sas.length; i2++) {
+                a_xjmr[a_xjmr.length - 1]['p'][a_xjmr[a_xjmr.length - 1]['p'].length] = sas[i2].textContent;
+                console.log(a_xjmr[a_xjmr.length - 1]['p'], a_xjmr[a_xjmr.length - 1]['p'].length, sas[i2].textContent);
+            }
+        } else {
+            a_xjmr[a_xjmr.length - 1][a_xjmr_c[i].className] = a_xjmr_c[i].innerText;
+        }
     }
     a['xjmr'] = a_xjmr;
     for (var i = 1; i < document.querySelectorAll('.editor .xjie').length; i++) {
+
         var a_xj = [];
         a_xj[0] = { 'h': document.querySelectorAll('.editor .xjie')[i].querySelector('.h3').innerText };
         for (var i2 = 1; i2 < $('.editor .xjie').eq(i).find('>*').length; i2++) {
+
             a_xj[a_xj.length] = {};
             if ($('.editor .xjie').eq(i).find('>*').eq(i2).get()[0].className == 'p') {
-                var sa = $('.editor .xjie').eq(i).find('>*').eq(i2).get()[0];
-                var sas = $(sa).find('>*');
-                a_xj[a_xj.length - 1]['p'] = [];
-                if (sas.length > 0) {
-                    for (var i3 = 0; i3 < sas.length; i3++) {
-                        a_xj[a_xj.length - 1]['p'][i3] = sas.eq(i3).text();
-                    }
-                } else {
-                    a_xj[a_xj.length - 1]['p'][0] = sa.innerText;
-                }
 
+                var sa = $('.editor .xjie').eq(i).find('>*').eq(i2).get()[0];
+                var sas = $(sa).get()[0].childNodes;
+                a_xj[a_xj.length - 1]['p'] = [];
+
+                for (var i3 = 0; i3 < sas.length; i3++) {
+                    a_xj[a_xj.length - 1]['p'][a_xj[a_xj.length - 1]['p'].length] = sas[i3].textContent;
+                }
             } else {
                 a_xj[a_xj.length - 1][$('.editor .xjie').eq(i).find('>*').eq(i2).get()[0].className] = $('.editor .xjie').eq(i).find('>*').eq(i2).get()[0].innerText;
             }
         }
         a['xj' + i] = a_xj;
     }
+    console.log(a);
     return a;
 }
+/*
+div.p
+    "text"
+    div
+        "text"
+    div
+        "text"
+*/
 $(".editor").on('paste', function(event) {
     textPaste(event);
 });
