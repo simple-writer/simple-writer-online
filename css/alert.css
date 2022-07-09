@@ -1,0 +1,30 @@
+.message div {
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    background-color: var(--bgcolor);
+    font-size: 16px;
+    color: var(--textcolor);
+    border-radius: 5px;
+    box-shadow: 0 1px 5px var(--box-shadow-color2);
+    position: absolute;
+    z-index: 99999;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: alert 3s;
+    pointer-events: none;
+}
+
+@keyframes alert {
+    0% {
+        opacity: 0;
+    }
+    7%,
+    93% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

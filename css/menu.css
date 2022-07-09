@@ -1,0 +1,32 @@
+.menu {
+    width: 150px;
+    position: absolute;
+    z-index: 888;
+    background-color: var(--bgcolor);
+    padding: 10px;
+    box-shadow: 0 0 5px var(--box-shadow-color1);
+    display: none;
+    right: 0;
+    top: 40px;
+    line-height: 40px;
+    z-index: 666;
+    user-select: none;
+}
+
+.menu>div {
+    display: none;
+}
+
+.menu>.mr {
+    display: block;
+}
+
+.menu li {
+    text-indent: 1em;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    box-shadow: 0 0 4px var(--box-shadow-color1);
+}

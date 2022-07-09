@@ -1,0 +1,43 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    --titlebgcolor: #eeeeee;
+    --bgcolor: #f4f4f4;
+    --maincolor: #00baff;
+    --titlecolor: #888;
+    --box-shadow-color1: #888;
+    --box-shadow-color2: rgba(0, 0, 0, .2);
+    --font-family: sans-serif;
+    --textcolor: #000;
+    --editor-focus-bgcolor: rgb(235, 235, 235);
+    --fa-primary-color: #000;
+    --fa-secondary-color: #00baff;
+    --fa-secondary-opacity: 1;
+    --leftbar-show-hover-bgcolor: #fff;
+    --leftbar-go-hover-bgcolor: #e6e6e6;
+    --fa-primary-opacity: 1;
+    -webkit-tap-highlight-color: transparent;
+    transition: color .15s;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--bgcolor);
+    font-family: var(--font-family), Arial, Helvetica, sans-serif;
+    color: var(--textcolor);
+    overflow: hidden;
+}
+
+::selection {
+    background-color: rgba(128, 128, 128, 0.5);
+}

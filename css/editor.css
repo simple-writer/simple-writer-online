@@ -1,0 +1,123 @@
+.editor {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    overflow-x: visible;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: var(--bgcolor);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--textcolor);
+    border-radius: 20px;
+    max-height: 30px!important;
+}
+
+.editor * {
+    outline: 0;
+    font-weight: 500;
+    text-align: left;
+    line-height: 40px;
+    font-size: 20px;
+    position: relative;
+    margin: 20px 0;
+    transition: all .6s;
+}
+
+.editor .h1:focus,
+.editor .h2:focus,
+.editor .h3:focus,
+.editor .h4:focus,
+.editor .p:focus,
+.editor .blockquote:focus {
+    background-color: var(--editor-focus-bgcolor);
+}
+
+.editor .h1:empty::before {
+    content: '标题';
+    opacity: 0.4;
+}
+
+.editor .h2:empty::before {
+    content: '副标题';
+    opacity: 0.4;
+}
+
+.editor .h3:empty::before {
+    content: '小节标题';
+    opacity: 0.4;
+}
+
+.editor .h4:empty::before {
+    content: '小小节标题';
+    opacity: 0.4;
+}
+
+.editor .p:empty::before {
+    content: '文字域';
+    opacity: 0.4;
+}
+
+.editor .blockquote:empty::before {
+    content: '引用域';
+    opacity: 0.4;
+}
+
+.editor .h1 {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.editor .h2 {
+    font-size: 20px;
+    margin-left: 30px;
+    opacity: 0.6;
+    font-weight: 300;
+}
+
+.editor .h3 {
+    font-weight: 600;
+}
+
+.editor .p {
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.editor .xxjie {
+    margin-left: 30px;
+}
+
+.editor .h4 {
+    font-weight: 600;
+}
+
+.editor .blockquote {
+    opacity: 0.8;
+    text-indent: 2em;
+    padding-left: 20px;
+    position: relative;
+    height: max-content;
+    margin-left: 20px;
+}
+
+.editor .blockquote:after {
+    content: '';
+    width: 3px;
+    height: 100%;
+    --maincolor: inherit;
+    background-color: var(--maincolor);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.editor img{
+    max-width: 100%;
+}

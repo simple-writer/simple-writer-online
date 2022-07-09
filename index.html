@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html lang='zh-cn'>
 
+<!--
+    _______       _                                  _              
+   |  _____|     |_|                                | |              
+   | |_____    ____       _  ___  __     _  ___     | |      ___      
+   |_____  |  |__  |     | |/ _ \/_ \   | |/ _ \    | |     / _ \      
+    _____| |     | |__   | | | | | | |  | | |_| |   | |__  | /_\ |      
+   |_______|     |____|  |_|_| |_| |_|  | |\___/    |____| \ \___        
+                                        | |                 \___/                  
+                                        |_|     
+    _        __        _             _         _          
+   \ \      /  \      / /           |_|       | |      
+    \ \    / /\ \    / /   _  __   ____     __| |__     ___    _  __   
+     \ \  / /  \ \  / /   | |/__\ |__  |   |__   __|   / _ \  | |/__\  
+      \ \/ /    \ \/ /    | |        | |__    | |__   | /_\ | | |
+       \__/      \__/     |_|        |____|   |____|  \ \___  |_|
+                                                       \___/
+-->
+
 <head>
-    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Simple Writer</title>
     <link rel="stylesheet" href="font/css/all.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="icomoon.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/alert.css">
+    <link rel="stylesheet" href="./css/dialog.css">
+    <link rel="stylesheet" href="./css/read.css">
+    <link rel="stylesheet" href="./css/editor.css">
+    <link rel="stylesheet" href="./css/icomoon.css">
+    <link rel="stylesheet" href="./css/leftbar.css">
+    <link rel="stylesheet" href="./css/links.css">
+    <link rel="stylesheet" href="./css/loading.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/prism.css">
+    <link rel="stylesheet" href="./css/topbar.css">
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src="./js/start.js"></script>
+    <script src="./js/alert.js"></script>
+    <script src="./js/dialog.js"></script>
+    <script src="./js/download.js"></script>
+    <script src="./js/editor.js"></script>
+    <script src="./js/file.js"></script>
+    <script src="./js/locastorage.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/prism.js"></script>
+    <script src="./js/quickkey.js"></script>
+    <script src="./js/setting.js"></script>
+    <script src="./js/start.js"></script>
+    <script src="./js/topbar.js"></script>
+    <script src="./js/onload.js"></script>
+    <style id='style'></style>
+    <style id='style2'></style>
+    <style id='style3'></style>
 </head>
 
 <body>
-    <script>
-        window.onload = function() {
-            setTimeout(function() {
-                $('.loading').hide();
-                $('.main').show();
-                startFunction();
-            }, 2000);
-        }
-    </script>
     <div class="loading">
         <h1></h1>
     </div>
@@ -191,9 +227,7 @@
                 </div>
             </div>
         </div>
-        <div class="editor">
-
-        </div>
+        <div class="editor"></div>
         <div class="cover"></div>
         <div class="dialog">
             <div class="dialog-show">
@@ -228,6 +262,38 @@
                     </div>
                     <button class="no">取消</button><button class="ok">导入</button>
                 </div>
+                <div class="page addimg">
+                    <h1 class="title">添加图片</h1>
+                    <input type="text" class="imgurl" placeholder="输入图片URL"><button class="btn">预览</button>
+                    <img src="" alt="" class="ylan">
+                    <button class="no">取消</button><button class="ok">添加</button>
+                </div>
+                <div class="page addcode">
+                    <h1 class="title">添加代码</h1>
+                    <select>
+                        <option>html</option>
+                        <option>css</option>
+                        <option>js</option>
+                    </select>
+                    <textarea class="codein"></textarea>
+                    <button class="no">取消</button><button class="ok">添加</button>
+                </div>
+                <div class="page reimg">
+                    <h1 class="title">更改图片</h1>
+                    <input type="text" class="imgurl" placeholder="输入图片URL"><button class="btn">预览</button>
+                    <img src="" alt="" class="ylan">
+                    <button class="del">删除</button><button class="no">取消</button><button class="ok">确定</button>
+                </div>
+                <div class="page recode">
+                    <h1 class="title">更改代码</h1>
+                    <select>
+                        <option>HTML</option>
+                        <option>CSS</option>
+                        <option>JS</option>
+                    </select>
+                    <textarea class="codein"></textarea>
+                    <button class="del">删除</button><button class="no">取消</button><button class="ok">确定</button>
+                </div>
             </div>
 
             <div class="dialog-cover"></div>
@@ -239,6 +305,5 @@
     </div>
 </body>
 
-<script src="script.js"></script>
 
 </html>

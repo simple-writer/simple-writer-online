@@ -1,0 +1,28 @@
+.links {
+    position: relative;
+}
+
+.links::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    height: 3px;
+    --maincolor: inherit;
+    background-color: var(--maincolor);
+    right: 0;
+    pointer-events: none;
+    transition: all .5s;
+    width: 0px;
+    left: auto;
+}
+
+.links:hover::after {
+    left: 0;
+    right: auto;
+    width: 100%;
+}
+
+.links:active::after {
+    width: 100%;
+    transform: scale(0.7);
+}

@@ -1,0 +1,81 @@
+.topbar {
+    width: 100%;
+    height: 40px;
+    background-color: var(--titlebgcolor);
+    box-shadow: 0 0 10px #a6a6a6;
+    position: relative;
+    z-index: 999;
+    user-select: none;
+    transition: all .3s;
+    opacity: 1;
+}
+
+.topbar:hover {
+    opacity: 1!important;
+}
+
+.topbar:hover~.left_bar {
+    top: 40px!important;
+    height: calc(100% - 40px)!important;
+}
+
+.topbar p.logo {
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 40px;
+    margin-left: 2%;
+    margin-right: 0;
+    width: max-content;
+    text-align: center;
+    transition: opacity 0.1s;
+    -webkit-app-region: no-drag;
+    float: left;
+    color: var(--maincolor);
+}
+
+.topbar p.title {
+    color: var(--textcolor);
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.topbar .message {
+    float: right;
+    color: var(--fa-primary-color);
+    line-height: 40px;
+    font-size: 20px;
+    padding: 0 10px;
+    opacity: 0.7;
+}
+
+.topbar .addons {
+    float: right;
+}
+
+.topbar .addons li {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    font-size: 24px;
+    transition: all .3s;
+}
+
+.topbar .addons li:last-child {
+    font-size: 20px;
+}
+
+.topbar .addons li:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+@media(max-width:460px) {
+    .topbar .title {
+        display: none;
+    }
+}

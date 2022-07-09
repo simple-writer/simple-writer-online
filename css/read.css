@@ -1,0 +1,78 @@
+.read .h1,
+.read .h3 {
+    color: var(--maincolor);
+    text-shadow: 0 1px 5px var(--box-shadow-color2);
+}
+
+.read .blockquote {
+    background-color: rgba(126, 126, 126, 0.2);
+}
+
+.read *:empty::before {
+    content: ''!important;
+}
+
+.read {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    overflow-x: visible;
+}
+
+.read * {
+    outline: 0;
+    font-weight: 500;
+    text-align: left;
+    line-height: 40px;
+    font-size: 20px;
+    position: relative;
+    margin: 20px 0;
+}
+
+.read .h1 {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.read .h2 {
+    font-size: 20px;
+    margin-left: 30px;
+    opacity: 0.6;
+    font-weight: 300;
+}
+
+.read .h3 {
+    font-weight: 600;
+}
+
+.read .p {
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.read .blockquote {
+    opacity: 0.8;
+    text-indent: 2em;
+    padding-left: 20px;
+    position: relative;
+    height: max-content;
+    margin-left: 20px;
+}
+
+.read .blockquote:after {
+    content: '';
+    width: 3px;
+    height: 100%;
+    --maincolor: inherit;
+    background-color: var(--maincolor);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.page .read {
+    padding: 0;
+}
