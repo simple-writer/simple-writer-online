@@ -154,28 +154,6 @@
     box-shadow: 0 1px 5px var(--box-shadow-color2);
 }
 
-.dialog-show .page.newfile button {
-    border: 0;
-    outline: 0;
-    font-size: 16px;
-    padding: 6px;
-    background-color: var(--maincolor);
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px var(--box-shadow-color2);
-    transition: all .2s;
-    cursor: pointer;
-}
-
-.dialog-show .page.newfile button:hover {
-    filter: brightness(1.2);
-}
-
-.dialog-show .page.newfile button:active {
-    box-shadow: 0 0px 3px var(--box-shadow-color2);
-    filter: brightness(1.1);
-}
-
 .dialog-show .page {
     animation: dialogshow .5s;
 }
@@ -223,35 +201,6 @@
     border: rgba(126, 126, 126, 0.4) dashed 2px;
 }
 
-.dialog-show .page.daoruhelper button {
-    width: 70px;
-    height: 40px;
-    border: 0;
-    outline: 0;
-    background-color: var(--maincolor);
-    margin: 10px;
-    border-radius: 5px;
-    color: #fff;
-    box-shadow: 0 1px 5px var(--box-shadow-color2);
-    cursor: pointer;
-    font-size: 18px;
-    transition: all .2s;
-}
-
-.dialog-show .page.daoruhelper button:hover {
-    filter: brightness(1.2);
-}
-
-.dialog-show .page.daoruhelper button:active {
-    box-shadow: none;
-    filter: brightness(0.8);
-}
-
-.dialog-show .page.daoruhelper button.no {
-    background-color: #e6e6e6;
-    color: #000;
-}
-
 .dialog-show .page.daoruhelper button.no:hover {
     filter: brightness(1.05);
 }
@@ -271,10 +220,7 @@
     box-shadow: 0 1px 5px var(--box-shadow-color2);
 }
 
-.dialog-show .page.addimg button,
-.dialog-show .page.reimg button,
-.dialog-show .page.addcode button,
-.dialog-show .page.recode button {
+.dialog-show button {
     border: 0;
     outline: 0;
     font-size: 16px;
@@ -286,26 +232,16 @@
     transition: all .2s;
     cursor: pointer;
 }
-
-.dialog-show .page.addimg button:hover,
-.dialog-show .page.reimg button:hover,
-.dialog-show .page.addcode button:hover,
-.dialog-show .page.recode button:hover {
+.dialog-show button:hover {
     filter: brightness(1.2);
 }
 
-.dialog-show .page.addimg button:active,
-.dialog-show .page.reimg button:active,
-.dialog-show .page.addcode button:active,
-.dialog-show .page.recode button:active {
+.dialog-show button:active {
     box-shadow: 0 0px 3px var(--box-shadow-color2);
     filter: brightness(1.1);
 }
 
-.dialog-show .page.addimg button.no,
-.dialog-show .page.reimg button.no,
-.dialog-show .page.addcode button.no,
-.dialog-show .page.recode button.no {
+.dialog-show button.no {
     background-color: #e6e6e6;
     color: #000;
     margin: 10px;
@@ -345,7 +281,56 @@
     border: 0;
     outline: 0;
 }
-
+.dialog-show .page.maincolor ul.color{
+    width: 100%;
+    height: 300px;
+}
+.dialog-show .page.maincolor ul.color li{
+    width: calc(20% - 10px);
+    height: 100px;
+    float: left;
+    margin: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+.dialog-show .page.maincolor ul.color li.select{
+    border: #000 solid 2px;
+}
+.dialog-show .page.maincolor ul.color li:nth-child(1){
+    background-color: #00baff;
+}
+.dialog-show .page.maincolor ul.color li:nth-child(2){
+    background-color: #ea6725;
+}
+.dialog-show .page.maincolor ul.color li:nth-child(3){
+    background-color: #e7ea22;
+}
+.dialog-show .page.maincolor ul.color li:nth-child(4){
+    background-color: #ea2ae7;
+}
+.dialog-show .page.maincolor ul.color li:nth-child(5){
+    background-color: #31ea23;
+}
+.dialog-show .page.maincolor ul.color li.zdy{
+    position: relative;
+    background-color: #fff;
+}
+.dialog-show .page.maincolor ul.color li.zdy p{
+    pointer-events: none;
+}
+.dialog-show .page.maincolor ul.color li.zdy input{
+    display: block;
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: #00aaff;
+}
 @keyframes dialogshow {
     from {
         transform: translateX(100%);

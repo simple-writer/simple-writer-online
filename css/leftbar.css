@@ -1,9 +1,9 @@
 .left_bar {
     transition: left .5s ease-in-out, top .3s ease-in-out, height .3s ease-in-out;
     width: 100%;
-    max-width: 22rem;
+    max-width: 30rem;
     height: calc(100% - 40px);
-    left: -23rem;
+    left: -32rem;
     top: 40px;
     background-color: var(--bgcolor);
     box-shadow: 3px 0 5px var(--box-shadow-color1);
@@ -125,4 +125,19 @@
     transition: opacity .3s;
     opacity: 0;
     pointer-events: none;
+}
+.eyes{
+    background-color: #ff00003b;
+    opacity: 0;
+    position: absolute;
+    z-index: 9999999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: all .3s;
+}
+.eyes.on{
+    opacity: 0.4;
 }

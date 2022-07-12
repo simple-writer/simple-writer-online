@@ -18,6 +18,13 @@ function setEvents() {
     $('.editor .blockquote').focus(function () {
         nowfocus = $(this);
     });
+    $('.editor img').click(function(){
+        nowfocus = $(this);
+    })
+    $('.editor pre').click(function(){
+        nowfocus = $(this);
+    })
+    
     $('.editor .h1').attr('contenteditable', 'true');
     $('.editor .h2').attr('contenteditable', 'true');
     $('.editor .h3').attr('contenteditable', 'true');
@@ -43,7 +50,10 @@ function setEvents() {
         }
     });
     a();
-
+    $('.editor .h1').add('.editor .h2').add('.editor .h3').add('.editor .h4').add('.editor .p').add('.editor .blockquote').on('paste', function (event) {
+        textPaste(event);
+        console.log(event);
+    });
 }
 
 function queryNowTextToLinSave() {
@@ -153,13 +163,10 @@ function queryNowTextToLinSave() {
     // console.log(a);
     return a;
 }
-$(".editor").on('paste', function (event) {
-    textPaste(event);
-});
+
 
 function textPaste(event) {
     event.preventDefault();
-    console.log('gssss');
     var text;
     var clp = (event.originalEvent || event).clipboardData;
     // 兼容针对于opera ie等浏览器

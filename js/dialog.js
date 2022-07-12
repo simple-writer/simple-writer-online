@@ -269,6 +269,7 @@ function setFilesEvent() {
                                         }
                                     }
                                 }
+                                data+='</div>';
                             }
                         }
                     }
@@ -359,6 +360,7 @@ function setFilesEvent() {
                                         }
                                     }
                                 }
+                                data+='</div>';
                             }
                         }
                     }
@@ -436,6 +438,7 @@ function setFilesEvent() {
                                         }
                                     }
                                 }
+                                data+='</div>';
                             }
                         }
                     }
@@ -489,6 +492,7 @@ function setFilesEvent() {
         h2,h3 {
             color: var(--maincolor, #00baff);
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
         }
         
         h1 {
@@ -508,8 +512,6 @@ function setFilesEvent() {
         h2,h3 {
             font-size: 20px;
             margin-left: 30px;
-            opacity: 0.6;
-            font-weight: 300;
         }
         .xxjie{
             margin-left:30px;
@@ -703,7 +705,24 @@ function setFilesEvent() {
         addzt = null;
 
     });
-
+    $('.dialog-show .page.maincolor ul.color li').click(function(){
+        $('.dialog-show .page.maincolor ul.color li').removeClass('select');
+        $(this).addClass('select');
+    });
+    $('#maincolorxz').get()[0].oninput=function(){
+        $('.dialog-show .page.maincolor ul.color li.zdy').attr('data-val',$(this).val());
+        $('.dialog-show .page.maincolor ul.color li.zdy').css('background-color',$(this).val());
+    };
+    $('.dialog-show .page.maincolor button.no').click(function(){
+        closeDialog();
+    });
+    $('.dialog-show .page.maincolor button.ok').click(function(){
+        var a=JSON.parse(localStorage.getItem('settings'));
+        a.maincolor=$('.dialog-show .page.maincolor ul.color li.select').attr('data-val');
+        localStorage.setItem('settings',JSON.stringify(a));
+        querySettings();
+        closeDialog();
+    })
 }
 // 打开对话框
 function startDialog(page, close) {

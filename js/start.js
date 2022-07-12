@@ -19,6 +19,9 @@ function startFunction() {
     setTimeout(function() {
         alert('休息一下吧，你已经工作了三十分钟了')
     }, 1800000);
-
+    setTime();
+    setInterval(() => {
+        setTime();
+    }, 1000);
 
 }

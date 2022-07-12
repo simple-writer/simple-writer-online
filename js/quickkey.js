@@ -8,11 +8,13 @@ $(document).keydown(function(e) {
         newxj.innerHTML = '<div class="h3"></div><div class="p"></div>';
         var jsnow = nowfocus.get()[0];
         if (jsnow.className == 'h1') {} else if (jsnow.className == 'h2') {
-            $('.editor').get()[0].insertBefore(newxj, jsnow.nextSibling);
+            $('.editor').get()[0].insertBefore(newxj, jsnow.nextSibling.nextSibling);
             setEvents();
+            jsnow.nextSibling.nextSibling.querySelector('div.h3').focus();
         } else {
             $('.editor').get()[0].insertBefore(newxj, jsnow.parentNode.nextSibling);
             setEvents();
+            jsnow.parentNode.nextSibling.querySelector('div.h3').focus();
         }
     } else if (e.ctrlKey && e.altKey && e.keyCode == 13) {
         e.preventDefault();
@@ -24,10 +26,14 @@ $(document).keydown(function(e) {
             if (jsnow.parentNode.className == 'xjie mr') {} else {
                 if (jsnow.parentNode.className == 'xjie') {
                     jsnow.parentNode.insertBefore(newxj, jsnow.nextSibling);
+                setEvents();
+
+                    jsnow.nextSibling.querySelector('div.h4').focus();
                 } else {
                     jsnow.parentNode.parentNode.insertBefore(newxj, jsnow.parentNode.nextSibling);
-                }
                 setEvents();
+                jsnow.parentNode.nextSibling.querySelector('div.h4').focus();
+                }
             }
 
         }
@@ -44,6 +50,7 @@ $(document).keydown(function(e) {
             newxj.className = 'blockquote';
             $('.editor .xjmr').get()[0].insertBefore(newxj, $('.editor .xjmr>*').eq(0).get()[0]);
             setEvents();
+            $('.editor .xjmr>*').eq(0).get()[0].focus();
         } else {
             var newp = document.createElement('div');
             newp.className = 'p';
@@ -52,6 +59,7 @@ $(document).keydown(function(e) {
             newxj.className = 'blockquote';
             jsnow.parentNode.insertBefore(newxj, jsnow.nextSibling);
             setEvents();
+            jsnow.nextSibling.focus();
         }
     } else if (e.ctrlKey && e.altKey && e.key == 'q') {
         e.preventDefault();
@@ -64,8 +72,9 @@ $(document).keydown(function(e) {
                 var newxj = document.createElement('div');
                 newxj.className = 'blockquote';
                 jsnow.parentNode.parentNode.insertBefore(newxj, jsnow.parentNode.nextSibling);
-            }
             setEvents();
+            jsnow.parentNode.nextSibling.focus();
+            }
         }
     } else if (e.ctrlKey && !e.altKey && e.key == 'i') {
         e.preventDefault();
@@ -93,11 +102,13 @@ $(document).keydown(function(e) {
 
             $('.editor .xjmr').get()[0].insertBefore(newp, $('.editor .xjmr>*').eq(0).get()[0]);
             setEvents();
+            $('.editor .xjmr>*').eq(0).get()[0].focus();
         } else {
             var newp = document.createElement('div');
             newp.className = 'p';
             jsnow.parentNode.insertBefore(newp, jsnow.nextSibling);
             setEvents();
+            jsnow.nextSibling.focus();
         }
     } else if (e.ctrlKey && e.altKey && e.key == 'p') {
         e.preventDefault();
@@ -107,8 +118,9 @@ $(document).keydown(function(e) {
         if (jsnow.className == 'h1') {} else if (jsnow.className == 'h2') {} else {
             if (jsnow.parentNode.className == 'xxjie') {
                 jsnow.parentNode.parentNode.insertBefore(newp, jsnow.parentNode.nextSibling);
-            }
             setEvents();
+            jsnow.parentNode.nextSibling.focus();
+            }
         }
     } else if (!e.ctrlKey && !e.shiftKey && e.key == 'Delete') {
         e.preventDefault();
@@ -248,6 +260,7 @@ $(document).keydown(function(e) {
                                         }
                                     }
                                 }
+                                data+='</div>';
                             }
                         }
                     }
@@ -260,7 +273,10 @@ $(document).keydown(function(e) {
             text: "${data}",
             date: [${new Date().getFullYear()}, ${new Date().getMonth() + 1}, ${new Date().getDate()}],
             tag: [''],
-            jj: "${$('.editor').text().substring(0, 100)} ..."
+            main: "${queryHTMLtoText($('.editor').text().substring(0, 100))} ..."
         }`);
+    }else if(e.key=='F1'){
+        e.preventDefault();
+        startLeftBar('help');
     }
 });

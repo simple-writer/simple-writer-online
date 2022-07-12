@@ -2,21 +2,12 @@
 <html lang='zh-cn'>
 
 <!--
-    _______       _                                  _              
-   |  _____|     |_|                                | |              
-   | |_____    ____       _  ___  __     _  ___     | |      ___      
-   |_____  |  |__  |     | |/ _ \/_ \   | |/ _ \    | |     / _ \      
-    _____| |     | |__   | | | | | | |  | | |_| |   | |__  | /_\ |      
-   |_______|     |____|  |_|_| |_| |_|  | |\___/    |____| \ \___        
-                                        | |                 \___/                  
-                                        |_|     
-    _        __        _             _         _          
-   \ \      /  \      / /           |_|       | |      
-    \ \    / /\ \    / /   _  __   ____     __| |__     ___    _  __   
-     \ \  / /  \ \  / /   | |/__\ |__  |   |__   __|   / _ \  | |/__\  
-      \ \/ /    \ \/ /    | |        | |__    | |__   | /_\ | | |
-       \__/      \__/     |_|        |____|   |____|  \ \___  |_|
-                                                       \___/
+
+    Simple Writer
+
+    作者：陈思全
+    git仓库：https://github.com/simple-writer/simple-writer-online.git
+    官网：https://simple-writer.github.io/
 -->
 
 <head>
@@ -52,12 +43,14 @@
     <script src="./js/start.js"></script>
     <script src="./js/topbar.js"></script>
     <script src="./js/onload.js"></script>
-    <style id='style'></style>
-    <style id='style2'></style>
-    <style id='style3'></style>
+    <script src="./js/time.js"></script>
 </head>
 
 <body>
+    <!-- this is Javascript style -->
+    <style id='style'></style>
+    <style id='style2'></style>
+    <style id='style3'></style>
     <div class="loading">
         <h1></h1>
     </div>
@@ -82,22 +75,11 @@
         <div class="menu">
             <div class="mr">
                 <ul>
-                    <li data-group="group_editor">编辑...</li>
                     <li class="save">保存</li>
                     <li class="files">文件</li>
                     <li class="setting">选项</li>
                     <li class="togglemode">打开阅读模式</li>
                     <li class="lin_save">另存为</li>
-                </ul>
-            </div>
-            <div class="group_editor">
-                <ul>
-                    <li class="addoneup">添加一节到上方</li>
-                    <li class="addonedown">添加一节到下方</li>
-                    <li class="addoneblockquiteup">添加引用域到上方</li>
-                    <li class="addoneblockquitedown">添加引用域到下方</li>
-                    <li class="delthe">删除元素</li>
-                    <li class="deltheone">删除该节</li>
                 </ul>
             </div>
         </div>
@@ -122,6 +104,10 @@
                         <p class="title">标题栏沉浸</p>
                         <div class="show">关</div>
                     </li>
+                    <li class="istime">
+                        <p class="title">时间显示</p>
+                        <div class="show">关</div>
+                    </li>
                 </ul>
                 <h2><span class="fad fa-sync"></span> 备份与同步</h2>
                 <ul>
@@ -136,94 +122,12 @@
             </div>
             <div class="page about">
                 <div class="read">
-                    <div class="h1">欢迎使用Simple Writer，它是一个简洁的写作工具</div>
-                    <div class="h2">By 陈思全</div>
-                    <div class="xjie mr"></div>
-                    <div class="xjie">
-                        <div class="h3">为什么编写Simple Writer?</div>
-                        <div class="p">大家应该用过Word 文档吧，在那里写文章十分的不舒服。总是要切换各种各样的东西，写作的灵感完全没了。。。</div>
-                        <div class="blockquote">其实写作并不需要很强大的工具，而是一个不易让人分心的环境。</div>
-                        <div class="p">我就想了想，为什么不自己动手做一个更简洁的写作工具呢？
-                            <div>于是，我就趁着暑假空闲时间，利用我自己学到的前端知识，编写了Simple Writer。</div>
-                        </div>
-                    </div>
-                    <div class="xjie">
-                        <div class="h3">Simple Writer的特点</div>
-                        <div class="p">- 全自动保存。
-                            <div>- 快捷键全覆盖，几乎所有功能都有对应的快捷键。</div>
-                            <div>- 灵感模式，不放过任何一个在脑海中一闪而过的灵感。</div>
-                            <div>- 亮/暗色模式，不让灵感局限于时间。</div>
-                            <div>- 沉浸式状态栏+全屏模式，让你专注于写作。</div>
-                            <div>- 支持另存为多种格式，TXT、MarkDown、DOC、HTML都不在话下。</div>
-                            <div>- 完全本地保存，绝对隐私保护。</div>
-                            <div>- 支持数据导入导出，换台设备也不怕。</div>
-                        </div>
-                    </div>
-                    <div class="xjie">
-                        <div class="h3">使用技巧</div>
-                        <div class="p">- Simple Writer 正常情况下3分钟保存一次，你也可以`Ctrl+S`保存
-                            <div>- Ctrl+Alt+S另存为</div>
-                            <div>- Ctrl+Shift+S打开设置</div>
-                            <div>- Ctrl+H打开文件目录</div>
-                            <div>- Ctrl+Alt+Enter和Ctrl+Enter向上下添加一个小节</div>
-                            <div>- Ctrl+Alt+Q和Ctrl+Q向上下添加一个引用部分<br></div>
-                            <div>- Delete 删除本编辑区域（慎按，无法撤回）</div>
-                            <div>- Ctrl+Delete 删除本编辑区域所在的小节<span>（慎按</span><span>，无法撤回</span><span>）</span></div>
-                            <div><span>- 你也可以在右上角菜单上实现以上功能</span></div>
-                        </div>
-                    </div>
-                    <div class="xjie">
-                        <div class="h3">Simple Writer 的诞生离不开：</div>
-                        <div class="p">- jQuery
-                            <div>- Bootstrap Icons 和Font Awesome和IconMoon</div>
-                            <div>- Github Pages</div>
-                            <div>- Clear Writer 的少部分样式</div>
-                            <div>*注：由于本人实在没有什么设计天赋，所以，<span>少部分样式我参考了Clear Writer，它是一个很优秀的MarkDown写作工具（clearwriter.gitee.io）</span></div>
-                        </div>
-                    </div>
+                    <div class="h1"  >欢迎使用Simple Writer，它是一个简洁的写作工具</div><div class="h2"  >By 陈思全</div><div class="xjie mr"  ></div><div class="xjie"  ><div class="h3"  >为什么编写Simple Writer?</div><div class="p"  >大家应该用过Word 文档吧，在那里写文章十分的不舒服。总是要切换各种各样的东西，写作的灵感完全没了。。。</div><div class="blockquote"  >其实写作并不需要很强大的工具，而是一个不易让人分心的环境。其实写作并不需要很强大的工具，而是一个不易让人分心的环境。</div><div class="p"  >我就想了想，为什么不自己动手做一个更简洁的写作工具呢？\n<div  >于是，我就趁着暑假空闲时间，利用我自己学到的前端知识，编写了Simple Writer。</div></div></div><div class="xjie"  ><div class="h3"  >Simple Writer的特点</div><div class="p"  >- 全自动保存。\n<div  >- 快捷键全覆盖，几乎所有功能都有对应的快捷键。\n</div><div  >- 灵感模式，不放过任何一个在脑海中一闪而过的灵感。\n</div><div  >- 亮/暗色和护眼模式，不让灵感局限于时间。\n</div><div  >- 沉浸式状态栏+全屏模式，让你专注于写作。\n</div><div  >- 支持另存为多种格式，TXT、MarkDown、DOC、HTML都不在话下。\n</div><div  >- 完全本地保存，绝对隐私保护。\n</div><div  >- 支持数据导入导出，换台设备也不怕。</div></div></div><div class="xjie"  ><div class="h3"  >Simple Writer 的诞生离不开：</div><div class="p"  >- jQuery<div  >&nbsp; &nbsp; &nbsp; &nbsp;jQuery是一个流行的DOMJS库，它为Simple Writer提供了底层支持。<br  ><div  >- Bootstrap Icons 和Font Awesome和IconMoon\n</div><div  >&nbsp; &nbsp; &nbsp; 它们都为Simple Writer 提供了图标资源。</div><div  >- Github Pages\n</div><div  >&nbsp; &nbsp; &nbsp; Github Pages是一个稳定的静态网页托管平台，Simple Writer的在线功能由他提供。</div><div  >- Clear Writer 的少部分样式\n</div><div  >&nbsp; &nbsp; &nbsp; 由于本人实在没有什么设计天赋，所以，少部分样式我参考了Clear Writer，它是一个很优秀的MarkDown写作工具（clearwriter.gitee.io）</div></div></div></div><div class="xjie"  ><div class="h3"  >更新日志</div><div class="xxjie"  ><div class="h4"  >V2.0</div><div class="p"  >- 新增护眼模式<div  >- 支持自定义主题色</div><div  >- 支持创建H3小节，Ctrl+Alt+Enter改为向内新建小节</div><div  >- 支持插入图片和代码域。\n</div><div  >- 取消所有向上新建功能\n</div><div  >- 快捷键添加一些人性化的功能\n</div><div  >- 删除有文字的小节和编辑区域时弹出提示</div><div  >- 右上角有时间提醒（需从设置打开）</div><div  >- 新增F1打开帮助。</div><div  >- 修复若干BUG</div></div></div><div class="xxjie"  ><div class="h4"  >V1.0</div><div class="p"  >- Simple Writer 第一个正式版。</div></div><div class="xxjie"  ><div class="h4"  >V0.1</div><div class="p"  >- Simple Writer孵化...</div></div></div>
                 </div>
             </div>
             <div class="page help">
                 <div class="read">
-                    <div class="h1">Simple Writer 帮助</div>
-                    <div class="h2">By 陈思全</div>
-                    <div class="xjie mr"></div>
-                    <div class="xjie">
-                        <div class="h3">关于编辑器的帮助</div>
-                        <div class="p">Q:如何创建新的小节？
-                            <div>A:Ctrl+（Alt+）Enter或右上角菜单-&gt;编辑-&gt;添加一节到上/下方，详情请见关于我们-&gt;使用技巧</div>
-                            <div>Q:如何创建新的引用部分？
-                                <div>A:Ctrl+（Alt+）Enter或右上角菜单-&gt;编辑-&gt;添加引用域到上/下方，详情请见关于我们-&gt;使用技巧</div>
-                                <div>Q:如何切换输入域？</div>
-                                <div>A:`Tab`或鼠标（手指）</div>
-                                <div>Q:每次新建文档，都会有一个默认的文字域，我不想要它，只要小节</div>
-                                <div>A:你可以在文字域那里按Ctrl+Enter，然后确定你不需要它，再把它Delete删掉（不可撤销）</div>
-                                <div>Q:我不小心删了默认的<span>文字域怎么办？</span></div>
-                                <div><span>A:在副标题处Ctrl+Q向下新建一个引用部分，它会在后面自动跟一个文字域，然后再把新建的引用部分删掉。</span></div>
-                                <div>如果你是在灵感模式下误删的，请重新开始!</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="xjie">
-                        <div class="h3">关于文件的帮助</div>
-                        <div class="p">Q:如何让灵感模式下的文件添加标题和副标题？
-                            <div>A:对不起，灵感模式是不能添加标题和副标题的。</div>
-                            <div>Q:另存为上面的格式都看不懂，该选哪个？</div>
-                            <div>A:按需选择，推荐选择DOC（Word 文档）和HTML（既可以用浏览器打开，也可以用Word文档打开）</div>
-                        </div>
-                    </div>
-                    <div class="xjie">
-                        <div class="h3">关于设置的帮助</div>
-                        <div class="p">Q:我可以自定义主题色吗？
-                            <div>A:抱歉，暂时不行。</div>
-                            <div>Q:我是手机端访问的，为什么我切换了字体，结果都一样？</div>
-                            <div>A:Simple Writer使用的是浏览器自带的CSS字体，因为字体文件会影响加载速度，而手机端自带的字体支持普遍较差。</div>
-                        </div>
-                    </div>
-                    <div class="xjie">
-                        <div class="h3">Q:我还有更多的问题？</div>
-                        <div class="p">A:可以加我QQ（2167967783）备注`Simple Writer 用户`，我会在亿会儿后同意，你就可以在QQ上和我反馈问题了。😁😁😁</div>
-                    </div>
+                    <div class="h1"  >Simple Writer 帮助</div><div class="h2"  >By 陈思全</div><div class="xjie mr"  ></div><div class="xjie"  ><div class="h3"  >快捷键使用帮助</div><div class="xxjie"  ><div class="h4"  >基本快捷键</div><div class="p"  >- Ctrl+C 复制<div  >- Ctrl+X 剪切</div><div  >- Ctrl+V 粘贴</div><div  >- Ctrl+A 全选本编辑区域</div><div  >- Ctrl+Z 撤回本编辑区域的文本</div><div  >- Ctrl+Y 反撤回本编辑区域的文本</div><div  >- Tab 向下切换编辑区域</div><div  >- Shift+Tab 向上切换编辑区域</div></div></div><div class="xxjie"  ><div class="h4"  >Editor快捷键</div><div class="p"  >- Ctrl+Enter 在该小节下新建一个小节<div  >- Ctrl+Alt+Enter 在该小小节或编辑区域下新建一个小小节</div><div  >- Ctrl+Q 在该编辑区域下新建一个引用部分</div><div  >- Ctrl+Alt+Q 在该小小节外新建一个引用部分</div><div  >- Ctrl+P 在该编辑区域下新建一个文字域</div><div  >- Ctrl+Alt+P 在小小节外新建一个文字域</div><div  >- Ctrl+I 在该编辑区域下新建一个图片</div><div  >- Ctrl+Alt+I 在小小节外新建一个图片</div><div  >- Ctrl+D 在该编辑区域下新建一个代码域</div><div  >- Ctrl+Alt+D 在小小节外新建一个代码域</div><div  >- Delete 删除该编辑区域</div><div  >- Ctrl+Delete 删除该小小节</div><div  >- Ctrl+Shift+Delete 删除该小节</div></div></div><div class="xxjie"  ><div class="h4"  >功能快捷键</div><div class="p"  >- Ctrl+S 保存<div  >- Ctrl+Alt+S 另存为</div><div  >- Ctrl+Shift+S 打开设置</div><div  >- F1 打开帮助</div><div  >- F11 全屏</div></div></div></div><div class="xjie"  ><div class="h3"  >关于手机使用的问题</div><div class="p"  >Simple Writer V2.0已停止对手机端的支持，如有不便，尽请谅解！</div></div><div class="xjie"  ><div class="h3"  >关于Editor的帮助</div><div class="xxjie"  ><div class="h4"  >如何修改图片和代码域？</div><div class="p"  >双击图片或代码域。</div></div><div class="xxjie"  ><div class="h4"  >如何在图片或代码域下新建元素？</div><div class="p"  >单击图片或代码域，然后执行相关操作。</div></div><div class="xxjie"  ><div class="h4"  >为什么删除元素时，有的会有提示，有的不会有？</div><div class="p"  >删除元素时，系统会根据内容的多少来判断是否提示。</div></div><div class="xxjie"  ><div class="h4"  >每次新建文档，都会有一个默认的文字域，我不想要它，只要小节，怎么做？</div><div class="p"  >你可以在文字域那里按Ctrl+Enter，然后确定你不需要它，再把它Delete删掉。反悔时，可以在副标题这里Ctrl+P。</div></div></div><div class="xjie"  ><div class="h3"  >关于文件的帮助</div><div class="xxjie"  ><div class="h4"  >如何让灵感模式下的文件添加标题和副标题？</div><div class="p"  >对不起，灵感模式是不能添加标题和副标题的。</div></div><div class="xxjie"  ><div class="h4"  >另存为上面的格式都看不懂，该选哪个？</div><div class="p"  >按需选择，推荐选择DOC（Word 文档）和HTML（既可以用浏览器打开，也可以用Word文档打开）</div></div></div><div class="xjie"  ><div class="h3"  >找不到你想要的帮助？</div><div class="p"  >请反馈到我的邮箱 mailto:2167967783@qq.com ，我十分欢迎你的反馈。</div></div>
                 </div>
             </div>
         </div>
@@ -262,6 +166,18 @@
                     </div>
                     <button class="no">取消</button><button class="ok">导入</button>
                 </div>
+                <div class="maincolor page">
+                    <h1 class="title">主题色</h1>
+                    <ul class="color">
+                        <li data-val="#00baff"><p>蓝色</p></li>
+                        <li data-val="#ea6725"><p>橙色</p></li>
+                        <li data-val="#e7ea22"><p>黄色</p></li>
+                        <li data-val="#ea2ae7"><p>粉色</p></li>
+                        <li data-val="#31ea23"><p>绿色</p></li>
+                        <li data-val="#00aaff" class="zdy"><p>自定义</p><input type="color" value="#00aaff" id="maincolorxz"></li>
+                    </ul>
+                    <button class="no">取消</button><button class="ok">确定</button>
+                </div>
                 <div class="page addimg">
                     <h1 class="title">添加图片</h1>
                     <input type="text" class="imgurl" placeholder="输入图片URL"><button class="btn">预览</button>
@@ -298,6 +214,8 @@
 
             <div class="dialog-cover"></div>
         </div>
+        <div class="eyes"></div>
+        <div class="time">12:30</div>
     </div>
     <div id="saves" style="display:none"></div>
     <div class="message">

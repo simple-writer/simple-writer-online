@@ -1,19 +1,19 @@
-console.log(`    _______       _                                  _              
-   |  _____|     |_|                                | |              
-   | |_____    ____       _  ___  __     _  ___     | |      ___      
-   |_____  |  |__  |     | |/ _ \\/_ \\   | |/ _ \\    | |     / _ \\      
-    _____| |     | |__   | | | | | | |  | | |_| |   | |__  | /_\\ |      
-   |_______|     |____|  |_|_| |_| |_|  | |\\___/    |____| \\ \\___        
-                                        | |                 \\___/                  
-                                        |_|     
-    _        __        _             _         _          
-   \\ \\      /  \\      / /           |_|       | |      
-    \\ \\    / /\\ \\    / /   _  __   ____     __| |__     ___    _  __   
-     \\ \\  / /  \\ \\  / /   | |/__\\ |__  |   |__   __|   / _ \\  | |/__\\  
-      \\ \\/ /    \\ \\/ /    | |        | |__    | |__   | /_\\ | | |
-       \\__/      \\__/     |_|        |____|   |____|  \\ \\___  |_|
-                                                       \\___/
-`)
+console.log('%cSimple Writer%cV2.0',`
+  font-size:25px;
+  color:#00baff;
+  background:#f1f1fe;
+  padding:10px;
+  border-radius:3px 0 0 3px;
+  margin:20px;
+  margin-right:0px;
+`,`
+font-size:15px;
+font-weight:bold;
+color:#fff;
+background:blue;
+border-radius:0 3px 3px 0;
+padding:2px;
+`);
 window.onload = function() {
     setTimeout(function() {
         $('.loading').hide();

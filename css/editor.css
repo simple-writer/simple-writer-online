@@ -3,7 +3,7 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 40px);
     overflow-y: scroll;
     overflow-x: visible;
 }
@@ -12,8 +12,11 @@
     width: 6px;
     height: 6px;
     background-color: var(--bgcolor);
+    opacity: 0.5;
 }
-
+::-webkit-scrollbar:hover{
+    opacity: 1;
+}
 ::-webkit-scrollbar-thumb {
     background-color: var(--textcolor);
     border-radius: 20px;
@@ -120,4 +123,17 @@
 }
 .editor img{
     max-width: 100%;
+}
+.main>.time{
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: max-content;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    color: var(--textcolor);
+    opacity: 0.4;
+    padding: 20px;
+    pointer-events: none;
 }

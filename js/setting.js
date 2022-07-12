@@ -7,6 +7,34 @@ function querySettings() {
         $('#style').html(`*{
             --bgcolor: #f4f4f4;
             --titlebgcolor: #eeeee;
+            --textcolor: #212121;
+            --fa-primary-color: #212121;
+            --leftbar-show-hover-bgcolor: #fff;
+            --leftbar-go-hover-bgcolor: #e6e6e6;
+            --editor-focus-bgcolor: rgb(235,235,235);
+            --box-shadow-color2: rgba(0,0,0,0.2);
+        }`);
+        $('.eyes').removeClass('on');
+
+    } else if (a.theme == 'Dark') {
+        $('.left_bar .setting .theme div.show').html('暗');
+        $('#style').html(`*{
+            --bgcolor: #0b0b0b;
+            --titlebgcolor: #111111;
+            --textcolor: #f1f1fe;
+            --fa-primary-color: #f1f1fe;
+            --leftbar-show-hover-bgcolor: #212121;
+            --leftbar-go-hover-bgcolor: #191919;
+            --editor-focus-bgcolor: rgb(20,20,20);
+            --box-shadow-color2: rgba(255,255,255,0.4);
+        }`);
+        $('.eyes').removeClass('on');
+
+    }else if (a.theme == 'Eyes') {
+        $('.left_bar .setting .theme div.show').html('护眼');
+        $('#style').html(`*{
+            --bgcolor: #f4f4f4;
+            --titlebgcolor: #eeeee;
             --textcolor: #000;
             --fa-primary-color: #000;
             --leftbar-show-hover-bgcolor: #fff;
@@ -14,32 +42,21 @@ function querySettings() {
             --editor-focus-bgcolor: rgb(235,235,235);
             --box-shadow-color2: rgba(0,0,0,0.2);
         }`);
-    } else if (a.theme == 'Dark') {
-        $('.left_bar .setting .theme div.show').html('暗');
-        $('#style').html(`*{
-            --bgcolor: #0b0b0b;
-            --titlebgcolor: #111111;
-            --textcolor: #fff;
-            --fa-primary-color: #fff;
-            --leftbar-show-hover-bgcolor: #000;
-            --leftbar-go-hover-bgcolor: #191919;
-            --editor-focus-bgcolor: rgb(20,20,20);
-            --box-shadow-color2: rgba(255,255,255,0.4);
-        }`);
+        $('.eyes').addClass('on');
     };
     //MainColor
-    if (a.maincolor == "#00BAFF") {
+    if (a.maincolor == "#00baff") {
         $('.left_bar .setting .maincolor div.show').html('蓝色');
-        $('#style2').html(`*{--maincolor: #00BAFF;
-        --fa-secondary-color:#00BAFF;}`);
-    } else if (a.maincolor == "#EA6725") {
+        $('#style2').html(`*{--maincolor: #00baff;
+        --fa-secondary-color:#00baff;}`);
+    } else if (a.maincolor == "#ea6725") {
         $('.left_bar .setting .maincolor div.show').html('橙色');
-        $('#style2').html(`*{--maincolor:#EA6725;
-        --fa-secondary-color:#EA6725;`);
-    } else if (a.maincolor == "#31EA23") {
+        $('#style2').html(`*{--maincolor:#ea6725;
+        --fa-secondary-color:#ea6725;`);
+    } else if (a.maincolor == "#31ea23") {
         $('.left_bar .setting .maincolor div.show').html('绿色');
-        $('#style2').html(`*{--maincolor:#31EA23;
-        --fa-secondary-color:#31EA23;`);
+        $('#style2').html(`*{--maincolor:#31ea23;
+        --fa-secondary-color:#31ea23;`);
     } else if (a.maincolor == "#e7ea22") {
         $('.left_bar .setting .maincolor div.show').html('黄色');
         $('#style2').html(`*{--maincolor:#e7ea22;
@@ -50,8 +67,8 @@ function querySettings() {
         --fa-secondary-color:#ea2ae7;`);
     } else {
         $('.left_bar .setting .maincolor div.show').html(a.maincolor);
-        $('#style2').html(`*{--maincolor:${a.maincolor});
-        --fa-secondary-color', ${a.maincolor}`);
+        $('#style2').html(`*{--maincolor:${a.maincolor};
+        --fa-secondary-color: ${a.maincolor}`);
     };
     //FontFamily
     if (a.fontfamily == 'sans-serif') {
@@ -77,6 +94,14 @@ function querySettings() {
         $('.cover').css('height', '100%');
         $('.cover').css('top', '40px');
     }
+    // Is Show Time
+    if(a.istime){
+        $('.left_bar .setting .istime div.show').html('开');
+        $('.main>.time').show();
+    }else{
+        $('.left_bar .setting .istime div.show').html('关');
+        $('.main>.time').hide();
+    }
 }
 // 设置设置事件
 function setSettingEvents() {
@@ -84,7 +109,9 @@ function setSettingEvents() {
         var a = JSON.parse(localStorage.getItem('settings'));
         if (a.theme == 'Light') {
             a.theme = 'Dark';
-        } else {
+        } else if(a.theme=='Dark'){
+            a.theme ='Eyes';
+        }else{
             a.theme = 'Light';
         }
         localStorage.setItem('settings', JSON.stringify(a));
@@ -117,20 +144,7 @@ function setSettingEvents() {
         querySettings();
     });
     $('.left_bar .setting .maincolor div.show').click(function() {
-        var a = JSON.parse(localStorage.getItem('settings'));
-        if (a.maincolor == '#00BAFF') {
-            a.maincolor = '#EA6725';
-        } else if (a.maincolor == '#EA6725') {
-            a.maincolor = '#31EA23';
-        } else if (a.maincolor == '#31EA23') {
-            a.maincolor = '#e7ea22'
-        } else if (a.maincolor == '#e7ea22') {
-            a.maincolor = '#ea2ae7'
-        } else {
-            a.maincolor = '#00BAFF'
-        }
-        localStorage.setItem('settings', JSON.stringify(a));
-        querySettings();
+        startDialog('maincolor',true);
     });
     $('.cover').click(function() {
         $('.left_bar').css('left', '-' + ($('.left_bar').width() + 70) + 'px');
@@ -150,6 +164,16 @@ function setSettingEvents() {
     });
     $('.left_bar .setting .go.daoru').click(function() {
         startDialog('daoruhelper', true);
+    });
+    $('.left_bar .setting .istime div.show').click(function() {
+        var a = JSON.parse(localStorage.getItem('settings'));
+        if (a.istime) {
+            a.istime = false;
+        } else {
+            a.istime = true;
+        }
+        localStorage.setItem('settings', JSON.stringify(a));
+        querySettings();
     });
 }
 
