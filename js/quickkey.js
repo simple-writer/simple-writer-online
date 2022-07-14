@@ -127,7 +127,7 @@ $(document).keydown(function(e) {
         var jsnow = nowfocus.get()[0];
         if (jsnow.className == 'h1') {} else if (jsnow.className == 'h2' || jsnow.className == 'h3' || jsnow.className == 'h4') {} else {
             if (jsnow.innerText.length > 10) {
-                var p = confirm('你确定要删除它吗？');
+                var p = confirm(value[language].delalert);
                 if (p) {
                     jsnow.remove();
                     setEvents();
@@ -147,7 +147,7 @@ $(document).keydown(function(e) {
             'xjie mr' || jsnow.parentNode.className ==
             'xjie') {} else {
             if (jsnow.parentNode.innerText.length > 15) {
-                var p = confirm('你确定要删除它吗？');
+                var p = confirm(value[language].delalert);
                 if (p) {
                     jsnow.parentNode.remove();
                     setEvents();
@@ -164,7 +164,7 @@ $(document).keydown(function(e) {
             'xjie mr') {} else if (jsnow.parentNode.className ==
             'xxjie') {
             if (jsnow.parentNode.parentNode.innerText.length > 20) {
-                var p = confirm('你确定要删除它吗？');
+                var p = confirm(value[language].delalert);
                 if (p) {
                     jsnow.parentNode.parentNode.remove();
                     setEvents();
@@ -175,7 +175,7 @@ $(document).keydown(function(e) {
             }
         } else {
             if (jsnow.parentNode.innerText.length > 20) {
-                var p = confirm('你确定要删除它吗？');
+                var p = confirm(value[language].delalert);
                 if (p) {
                     jsnow.parentNode.remove();
                     setEvents();
@@ -194,7 +194,7 @@ $(document).keydown(function(e) {
     } else if (e.ctrlKey && !e.shiftKey && !e.altKey && e.key == 's') {
         e.preventDefault();
         saveNowFile();
-        alert('已保存 At ' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
+        alert(value[language].saved+' At ' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
 
     } else if (e.ctrlKey && !e.shiftKey && e.key == 'h') {
         e.preventDefault();

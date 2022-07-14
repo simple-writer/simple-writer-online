@@ -136,4 +136,5 @@
     opacity: 0.4;
     padding: 20px;
     pointer-events: none;
+    display: none;
 }

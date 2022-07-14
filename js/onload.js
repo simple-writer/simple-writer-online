@@ -27,4 +27,10 @@ var zdsave = setInterval(saveNowFile, 180000);
 var isread = false;
 var daorustr;
 var addzt = null;
-querySettings();
+var _asa=0;
+var language = localStorage.lang||'zh-cn';
+try {
+  querySettings();
+} catch (error) {
+  
+}

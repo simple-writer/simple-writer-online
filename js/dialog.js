@@ -17,7 +17,7 @@ function setFilesEvent() {
     $('.dialog .dialog-show .files ul.cz .linggan').click(function() {
         // 灵感
         var a = JSON.parse(localStorage.getItem('texts'));
-        var val = '灵感 At ' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+        var val = value[language].lingan+' At ' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
         a[val] = "<div class='xjie mr'><div class='p'></div></div>";
         localStorage.setItem('texts', JSON.stringify(a));
         startFile(val);
@@ -38,7 +38,7 @@ function setFilesEvent() {
 
         var val = $('#newfilename').val();
         if (val == '') {
-            alert('文件名不能为空！');
+            alert(value[language].nameempty);
         } else {
             var a = JSON.parse(localStorage.getItem('texts'));
             a[val] = "<div class='h1'></div><div class='h2'></div><div class='xjie mr'><div class='p'></div></div>";
@@ -53,7 +53,7 @@ function setFilesEvent() {
         }
     });
     $('.dialog .dialog-show .files ul.texts li span.del').click(function() {
-        var a = confirm('你确定要删除吗?此操作不可逆!');
+        var a = confirm(value[language].delalert);
         if (a) {
             var b = JSON.parse(localStorage.getItem('texts'));
             delete b[$(this).parents('li.text').find('p').html()];
@@ -63,9 +63,9 @@ function setFilesEvent() {
         }
     });
     $('.dialog .dialog-show .files ul.texts li span.rename').click(function() {
-        var names = prompt('请输入新名字');
+        var names = prompt(value[language].renameprompt);
         if (names == '') {
-            alert('不得为空');
+            alert(value[language].empty);
         } else {
             var b = JSON.parse(localStorage.getItem('texts'));
             b[names] = b[$(this).parents('li.text').find('p').html()];
@@ -176,7 +176,7 @@ function setFilesEvent() {
                             } else if (i3 == 'pre') {
                                 data += '\n\n\'\'\''+obj[i][i2][i3][1]+'\n'+queryHTMLtoText(obj[i][i2][i3][0])+'\n\'\'\'';
                             } else if (i3 == 'img') {
-                                data += '\n\n![图片 图片](' + obj[i][i2][i3]+')';
+                                data += '\n\n!['+value[language].mdimgtext+'](' + obj[i][i2][i3]+')';
                             } else if (i3 == 'xxjie') {
                                 data+='\n___';
                                 for(var i4=0;i4<obj[i][i2][i3].length;i4++){
@@ -199,7 +199,7 @@ function setFilesEvent() {
                                         } else if (i5 == 'pre') {
                                             data += '\n\n\'\'\''+obj[i][i2][i3][i4][i5][1]+'\n'+queryHTMLtoText(obj[i][i2][i3][i4][i5][0])+'\n\'\'\'';
                                         } else if (i5 == 'img') {
-                                            data += '\n\n![图片 图片](' + obj[i][i2][i3][i4][i5]+')';
+                                            data += '\n\n!['+value[language].mdimgtext+'](' + obj[i][i2][i3][i4][i5]+')';
                                         }
                                     }
                                 }
@@ -556,7 +556,7 @@ function setFilesEvent() {
         downloadFile(nowstart + '.html', data);
     });
     $('#dljson').change(function() {
-        $('.dialog-show .page.daoruhelper .label').html('读取中');
+        $('.dialog-show .page.daoruhelper .label').html(value[language].importing);
         var resultFile = document.getElementById("dljson").files[0];
         if (resultFile) {
             var reader = new FileReader();
@@ -565,23 +565,23 @@ function setFilesEvent() {
             reader.onload = function(e) {
                 var urlData = this.result;
                 daorustr = urlData;
-                $('.dialog-show .page.daoruhelper .label').html('读取成功');
+                $('.dialog-show .page.daoruhelper .label').html(value[language].importok);
             };
         }
     })
     $('.dialog-show .page.daoruhelper button.ok').click(function() {
         if (daorustr) {
             localStorage = JSON.parse(daorustr);
-            alert('导入成功');
+            alert(value[language].importwin);
             closeDialog();
         } else {
-            alert('导入数据有异常');
+            alert(value[language].importerr);
         }
 
     });
     $('.dialog-show .page.daoruhelper button.no').click(function() {
         daorustr = undefined;
-        $('.dialog-show .page.daoruhelper .label').html('点击我<br>或将文件拖入这里');
+        $('.dialog-show .page.daoruhelper .label').html(value[language].drtext);
         closeDialog();
     });
     $('.dialog-show .page.addimg .btn').click(function() {
@@ -722,6 +722,10 @@ function setFilesEvent() {
         localStorage.setItem('settings',JSON.stringify(a));
         querySettings();
         closeDialog();
+    });
+    $('.dialog-show .page.lang ul li').click(function(){
+        localStorage.lang=$(this).attr('data-val');
+        window.location.reload();
     })
 }
 // 打开对话框

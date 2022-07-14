@@ -1,7 +1,7 @@
 function setMenuEvents() {
     $('.menu .mr .save').click(function() {
         saveNowFile();
-        alert('已保存 At ' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
+        alert(value[language].saved+' At ' + new Date().getFullYear() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getDate() + ' ' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
 
     });
     $('.menu .mr .files').click(function() {
@@ -22,7 +22,7 @@ function setMenuEvents() {
             setEvents();
 
             isread = false;
-            $(this).html('打开阅读模式')
+            $(this).html(value[language].menu_modeon)
         } else {
             $('.editor').addClass('read');
             $('.editor .h1').attr('contenteditable', 'false');
@@ -33,7 +33,7 @@ function setMenuEvents() {
             $('.editor .blockquote').attr('contenteditable', 'false');
 
             isread = true;
-            $(this).html('关闭阅读模式')
+            $(this).html(value[language].menu_modeoff)
         }
     });
     $('.menu .mr .lin_save').click(function() {

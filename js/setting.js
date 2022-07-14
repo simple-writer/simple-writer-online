@@ -3,7 +3,7 @@ function querySettings() {
     var a = JSON.parse(localStorage.getItem('settings'));
     //Theme
     if (a.theme == 'Light') {
-        $('.left_bar .setting .theme div.show').html('亮');
+        $('.left_bar .setting .theme div.show').html(value[language].light);
         $('#style').html(`*{
             --bgcolor: #f4f4f4;
             --titlebgcolor: #eeeee;
@@ -17,7 +17,7 @@ function querySettings() {
         $('.eyes').removeClass('on');
 
     } else if (a.theme == 'Dark') {
-        $('.left_bar .setting .theme div.show').html('暗');
+        $('.left_bar .setting .theme div.show').html(value[language].dark);
         $('#style').html(`*{
             --bgcolor: #0b0b0b;
             --titlebgcolor: #111111;
@@ -31,7 +31,7 @@ function querySettings() {
         $('.eyes').removeClass('on');
 
     }else if (a.theme == 'Eyes') {
-        $('.left_bar .setting .theme div.show').html('护眼');
+        $('.left_bar .setting .theme div.show').html(value[language].saveeyes);
         $('#style').html(`*{
             --bgcolor: #f4f4f4;
             --titlebgcolor: #eeeee;
@@ -46,23 +46,23 @@ function querySettings() {
     };
     //MainColor
     if (a.maincolor == "#00baff") {
-        $('.left_bar .setting .maincolor div.show').html('蓝色');
+        $('.left_bar .setting .maincolor div.show').html(value[language].blue);
         $('#style2').html(`*{--maincolor: #00baff;
         --fa-secondary-color:#00baff;}`);
     } else if (a.maincolor == "#ea6725") {
-        $('.left_bar .setting .maincolor div.show').html('橙色');
+        $('.left_bar .setting .maincolor div.show').html(value[language].orange);
         $('#style2').html(`*{--maincolor:#ea6725;
         --fa-secondary-color:#ea6725;`);
     } else if (a.maincolor == "#31ea23") {
-        $('.left_bar .setting .maincolor div.show').html('绿色');
+        $('.left_bar .setting .maincolor div.show').html(value[language].green);
         $('#style2').html(`*{--maincolor:#31ea23;
         --fa-secondary-color:#31ea23;`);
     } else if (a.maincolor == "#e7ea22") {
-        $('.left_bar .setting .maincolor div.show').html('黄色');
+        $('.left_bar .setting .maincolor div.show').html(value[language].yellow);
         $('#style2').html(`*{--maincolor:#e7ea22;
         --fa-secondary-color:#e7ea22;`);
     } else if (a.maincolor == "#ea2ae7") {
-        $('.left_bar .setting .maincolor div.show').html('粉色');
+        $('.left_bar .setting .maincolor div.show').html(value[language].pink);
         $('#style2').html(`*{--maincolor:#ea2ae7;
         --fa-secondary-color:#ea2ae7;`);
     } else {
@@ -80,14 +80,14 @@ function querySettings() {
     };
     //TitleMode
     if (a.titlemode) {
-        $('.left_bar .setting .titlemode div.show').html('开');
+        $('.left_bar .setting .titlemode div.show').html(value[language].open);
         $('.topbar').css('opacity', '0');
         $('.left_bar').css('height', '100%');
         $('.left_bar').css('top', '0');
         $('.cover').css('height', '100%');
         $('.cover').css('top', '0');
     } else {
-        $('.left_bar .setting .titlemode div.show').html('关');
+        $('.left_bar .setting .titlemode div.show').html(value[language].close);
         $('.topbar').css('opacity', '1');
         $('.left_bar').css('height', 'calc(100% - 40px)');
         $('.left_bar').css('top', '40px');
@@ -96,15 +96,20 @@ function querySettings() {
     }
     // Is Show Time
     if(a.istime){
-        $('.left_bar .setting .istime div.show').html('开');
+        $('.left_bar .setting .istime div.show').html(value[language].open);
         $('.main>.time').show();
     }else{
-        $('.left_bar .setting .istime div.show').html('关');
+        $('.left_bar .setting .istime div.show').html(value[language].close);
         $('.main>.time').hide();
     }
+    // Language
+    $('.left_bar .setting .language div.show').html($('[data-val="'+language+'"]').html());
 }
 // 设置设置事件
 function setSettingEvents() {
+    $('.left_bar .setting .language div.show').click(function(){
+        startDialog('lang',true);
+    })
     $('.left_bar .setting .theme div.show').click(function() {
         var a = JSON.parse(localStorage.getItem('settings'));
         if (a.theme == 'Light') {
@@ -160,7 +165,7 @@ function setSettingEvents() {
     $('.left_bar .setting .go.daochu').click(function() {
         var a = JSON.stringify(localStorage);
         downloadFile('simple-writer.json', a);
-        alert('已导出，下次就通过"从文件导入数据"导入')
+        alert(value[language].exportok)
     });
     $('.left_bar .setting .go.daoru').click(function() {
         startDialog('daoruhelper', true);

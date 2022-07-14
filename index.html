@@ -44,6 +44,7 @@
     <script src="./js/topbar.js"></script>
     <script src="./js/onload.js"></script>
     <script src="./js/time.js"></script>
+    <script src="./js/language.js"></script>
 </head>
 
 <body>
@@ -109,6 +110,13 @@
                         <div class="show">关</div>
                     </li>
                 </ul>
+                <h2><span class="fad fa-language"></span> 语言</h2>
+                <ul>
+                    <li class="language">
+                        <p class="title">语言 · 語言 · Language</p>
+                        <div class="show">中文（简体）</div>
+                    </li>
+                </ul>
                 <h2><span class="fad fa-sync"></span> 备份与同步</h2>
                 <ul>
                     <li class="go daoru">从文件导入数据<span class='fal fa-angle-right'></span></li>
@@ -146,7 +154,7 @@
                 </div>
                 <div class="page newfile">
                     <input type="text" id='newfilename'>
-                    <button>新建文档</button>
+                    <button>新建</button>
                 </div>
                 <div class="page lin_save">
                     <h1 class="title">选择一种格式</h1>
@@ -210,6 +218,15 @@
                     <textarea class="codein"></textarea>
                     <button class="del">删除</button><button class="no">取消</button><button class="ok">确定</button>
                 </div>
+                <div class="page lang">
+                    <h1 class="title">语言 · 語言 · Language · язык</h1>
+                    <ul>
+                        <li title='语言' data-val='zh-cn'>中文（简体）</li>
+                        <li title='語言' data-val='zh-hant'>中文（繁體）</li>
+                        <li title='Language' data-val='en-us'>English(US)</li>
+                        <li title='язык' data-val='tl-ru'>Крокодил</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="dialog-cover"></div>
@@ -223,5 +240,5 @@
     </div>
 </body>
 
-
+<!-- FJHIWPTXDLUGADBU -->
 </html>
