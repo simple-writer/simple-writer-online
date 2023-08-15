@@ -1,0 +1,25 @@
+.soft{
+  background-color: #f6f6f6;
+  color: #000;
+}
+.soft .topbar .menu:hover,
+.soft .topbar .setting:hover,
+.soft .topbar .fullscreen:hover{
+  background-color: #fff;
+}
+.soft #editor *::selection{
+  background-color: #ccc;
+}
+.soft .qmenu.files .file_con .item:hover,
+.soft .qmenu.files .bar>*:hover,
+.soft .qmenu.settings .bar .close:hover,
+.soft .qmenu.settings ul li.clicktogo:hover,
+.soft .qmenu.files .cmenu .item:hover{
+  background-color: #fff;
+}
+.soft .qmenu.files .file_con .item{
+  border-color: #ddd;
+}
+.soft *::-webkit-scrollbar-thumb{
+  background-color: #ccc;
+}

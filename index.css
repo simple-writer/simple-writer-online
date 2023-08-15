@@ -1,0 +1,417 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  overflow: hidden;
+  height: 100vh;
+  background-color: #fff;
+}
+.topbar{
+  width: 100%;
+  height: 40px;
+  box-shadow: #ddd 0 1px 5px;
+  position: relative;
+}
+.topbar .menu,
+.topbar .setting,
+.topbar .fullscreen
+{
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  float: left;
+}
+.topbar .menu:hover,
+.topbar .setting:hover,
+.topbar .fullscreen:hover{
+  background-color: #f4f4f4;
+}
+.topbar .logo{
+  line-height: 40px;
+  padding: 0 .5em;
+  float: left;
+}
+.topbar .setting,
+.topbar .fullscreen{
+  float: right;
+  font-size: 16px;
+}
+.topbar .title{
+  font-weight: 600;
+  line-height: 40px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#editor{
+  width: calc(100% - 40px);
+  margin: 40px auto;
+  max-width: 1000px;
+  height: calc(100vh - 120px);
+  outline: 0;
+  overflow: auto;
+  line-height: 1.6em;
+  padding: 0 20px;
+}
+::-webkit-scrollbar{
+  background-color: transparent;
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #eee;
+  width: 10px;
+  height: 10px;
+
+  border-radius: 20px;
+  box-sizing: border-box!important;
+}
+#editor.default *::selection{
+  background-color: #eee;
+  color: initial;
+}
+#editor.default h1,
+#editor.default h2,
+#editor.default h3
+{
+  padding-bottom: .5em;
+  line-height: 1.5em;
+}
+#editor.default p{
+  padding: 1em 0;
+}
+#editor.default blockquote{
+  border-left: #ccc solid 2px;
+  color: #666;
+  font-style: italic;
+  background-color: #f6f6f6;
+  padding: 5px 0;
+  padding-left: 2em;
+}
+.qmenu{
+  width: 400px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: inherit;
+  box-shadow: 1px 0 5px #999;
+  user-select: none;
+  z-index: 9;
+}
+.qmenu.settings{
+  left: auto;
+  box-shadow: -1px 0 5px #999;
+  right: -400px;
+  display: none;
+  transition: right .3s;
+}
+.qmenu.files{
+  left: -400px;
+  display: none;
+  transition: left .3s;
+}
+.qmenu.files .bar{
+  width: 100%;
+  height: 42px;
+}
+.qmenu.files .bar>*{
+  float: right;
+  line-height: 42px;
+  width: 42px;
+  text-align: center;
+}
+.qmenu.files .bar>*:hover{
+  background-color: #f4f4f4;
+}
+.qmenu.files .bar .title{
+  width: auto;
+}
+.qmenu.files .bar .title:hover{
+  background-color: inherit!important;
+}
+.qmenu.files .bar .close,
+.qmenu.files .bar .title{
+  float: left;
+}
+.qmenu.files .file_con{
+  width: 100%;
+  height: calc(100% - 42px);
+}
+.qmenu.files .file_con .item{
+  width: 100%;
+  height: 40px;
+  border-bottom: #f4f4f4 solid 1px;
+  line-height: 40px;
+  font-size: 14px;
+}
+.qmenu.files .file_con .item .title{
+  width: calc(100% - 40px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.qmenu.files .file_con .item .left,
+.qmenu.files .file_con .item .title,
+.qmenu.files .file_con .item .controls>*
+{
+  float: left;
+}
+.qmenu.files .file_con .item .controls
+{
+  float: right;
+  display: none;
+}
+.qmenu.files .file_con .item .left{
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+.qmenu.files .file_con .item.dir .left{
+  color: rgb(255, 217, 0);
+}
+.qmenu.files .file_con .item .controls>*{
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  margin: 8px 2px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.qmenu.files .file_con .item .controls .bi-trash:hover{
+  color: red;
+}
+.qmenu.files .file_con .item:hover{
+  background-color: #f4f4f4;
+}
+.qmenu.files .file_con .item:hover .controls{
+  display: block;
+}
+.qmenu.files .file_con .item:hover .title{
+  width: calc(100% - 96px);
+}
+.qmenu.files .cmenu{
+  position: absolute;
+  box-shadow: #999 1px 1px 5px;
+  display: none;
+  background-color: inherit;
+}
+.qmenu.files .cmenu.act{
+  display: block;
+}
+.qmenu.files .cmenu .item{
+  width: calc(100% - 20px);
+  line-height: 35px;
+  padding:0 10px;
+}
+.qmenu.files .cmenu .item:hover{
+  background-color: #f4f4f4;
+}
+.qmenu.files .cmenu.addnew_menu{
+  top: 42px;
+  right: 0px;
+}
+.qmenu.settings .bar{
+  width: 100%;
+  height: 42px;
+}
+.qmenu.settings .bar>*{
+  float: left;
+  line-height: 42px;
+  width: 42px;
+  text-align: center;
+}
+.qmenu.settings .bar .close:hover{
+  background-color: #f4f4f4;
+}
+.qmenu.settings li{
+  list-style: none;
+}
+.qmenu.settings ul{
+  padding: 10px;
+}
+.qmenu.settings>ul{
+  height: calc(100% - 42px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.qmenu.settings ul li .title{
+  font-size: 20px;
+  line-height: 40px;
+}
+.qmenu.settings ul li .ths .item{
+  line-height: 20px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+.qmenu.settings ul li .ths .item.act{
+  border: #0f0 solid 1px;
+}
+.qmenu.settings ul li .ths .item.act::before{
+  content:'\F272';
+  font-family: 'bootstrap-icons';
+  color: #0f0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 30px;
+  width: 30px;
+  text-align: center;
+  height: 30px;
+  display: block;
+}
+.qmenu.settings ul li ul li{
+  height: 30px;
+  margin: 10px 0;
+}
+.qmenu.settings ul li ul li .title{
+  font-size: 16px;
+  line-height: 30px;
+  float: left;
+}
+.qmenu.settings ul li ul li input[type=checkbox]{
+  float: right;
+  width: 40px;
+  height: 0px;
+  position: relative;
+  margin-top: 15px;
+}
+.qmenu.settings ul li ul li input[type=checkbox]::before{
+  content:'';
+  width: 40px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #aaa;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  transition: all .3s;
+}
+.qmenu.settings ul li ul li input[type=checkbox]::after{
+  content:'';
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: #eee;
+  position: absolute;
+  top: -12.5px;
+  left: 0;
+  box-shadow: #aaa 0 0 3px;
+  transition: all .3s;
+}
+.qmenu.settings ul li ul li input[type=checkbox]:checked::before{
+  background-color: #0079ca;
+}
+.qmenu.settings ul li ul li input[type=checkbox]:checked::after{
+  background-color: #35aeff;
+  left: 15px;
+}
+.qmenu.settings ul li.clicktogo:hover{
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+.qmenu.settings ul li.clicktogo i{
+  float: right;
+  line-height: 30px;
+}
+.dialog{
+  position: absolute;
+  box-shadow: #888 0 1px 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+  background-color: inherit;
+}
+.dialog.act{
+  opacity: 1;
+  pointer-events: all;
+}
+.dialog h1{
+  font-size: 24px;
+  font-weight: 300;
+}
+.dialog .bi-x-lg{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.dialog.exportText li{
+  list-style: none;
+  line-height: 30px;
+  border-bottom: #eee solid 1px;
+  padding: 0 10px;
+}
+.dialog.exportText ul{
+  border: #eee solid 1px;
+  margin-top: 10px;
+}
+.dialog.exportText li:hover{
+  background-color: #f4f4f4;
+}
+.alertMessage{
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: #888 0 1px 5px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: inherit;
+  display: none;
+}
+.guide{
+  width: 100%;
+  height: calc(100vh - 40px);
+  position: absolute;
+  top: 40px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.guide .logo{
+  font-size: 100px;
+  color: #eee;
+  font-weight: 600;
+  padding-bottom: 50px;
+}
+.guide li{
+  list-style: none;
+  line-height: 24px;
+  margin: 10px;
+  color: #888;
+  user-select: none;
+  cursor: pointer;
+}
+.guide li:hover{
+  color: #000;
+}
+@media print{
+  body>*{
+    display: none;
+  }
+  body>#editor{
+    display: block;
+  }
+}

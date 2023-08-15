@@ -1,0 +1,108 @@
+#editor.github {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #24292f;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+.dark #editor.github,
+.black #editor.github{
+  color: #e5eaee;
+}
+
+
+#editor.github h1 {
+  margin: .67em 0;
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 2em;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+}
+
+
+#editor.github h1,
+#editor.github h2,
+#editor.github h3,
+#editor.github h4,
+#editor.github h5,
+#editor.github h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+#editor.github h2 {
+  font-weight: 600;
+  padding-bottom: .3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid hsla(210,18%,87%,1);
+}
+
+#editor.github h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+}
+
+#editor.github h4 {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+#editor.github h5 {
+  font-weight: 600;
+  font-size: .875em;
+}
+
+#editor.github h6 {
+  font-weight: 600;
+  font-size: .85em;
+  color: #57606a;
+}
+
+#editor.github p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+#editor.github blockquote {
+  margin: 0;
+  padding: 0 1em;
+  color: #57606a;
+  border-left: .25em solid #d0d7de;
+}
+
+#editor.github::before {
+  display: table;
+  content: "";
+}
+
+#editor.github::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+#editor.github>*:first-child {
+  margin-top: 0 !important;
+}
+
+#editor.github>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+#editor.github p,
+#editor.github blockquote {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+#editor.github blockquote>:first-child {
+  margin-top: 0;
+}
+
+#editor.github blockquote>:last-child {
+  margin-bottom: 0;
+}

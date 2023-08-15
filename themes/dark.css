@@ -1,0 +1,26 @@
+.dark{
+  background-color: #444;
+  color: #fff;
+}
+.dark .topbar .menu:hover,
+.dark .topbar .setting:hover,
+.dark .topbar .fullscreen:hover{
+  background-color: #888;
+}
+.dark .qmenu.files .file_con .item:hover,
+.dark .qmenu.files .bar>*:hover,
+.dark .qmenu.settings .bar .close:hover,
+.dark .qmenu.settings ul li.clicktogo:hover,
+.dark .qmenu.files .cmenu .item:hover{
+  background-color: #888;
+}
+.dark .qmenu.files .file_con .item{
+  border-color: #ddd;
+}
+.dark *::-webkit-scrollbar-thumb{
+  background-color: #888;
+}
+.dark #editor *::selection{
+  background-color: #888;
+  color: #fff;
+}
