@@ -327,7 +327,20 @@ fs.init().then(function(){
   xr();
 })
 
+window.onbeforeunload=function(){
+  if(opentext)saveTxt();
+}
+
 document.execCommand("defaultParagraphSeparator", false, "p");  
+document.querySelector('#editor').onpaste=function(event){
+  event.preventDefault();
+  var text;
+  var clp = (event.originalEvent || event).clipboardData;
+  text = clp.getData('text/plain') || "";
+  if (text !== "") {
+      document.execCommand('insertText', false, text);
+  }
+}
 document.querySelector('#editor').onkeydown=function(e){
   if(e.ctrlKey){
     if(e.key=='b'||e.key=='i'){
@@ -478,7 +491,14 @@ function xr(){
       item.querySelector('.controls .bi-trash').onclick=function(e){
         e.stopPropagation();
         if(confirm('你确定要删除吗？删除后不可恢复！')){
-          fs.delete(this.parentElement.parentElement.getAttribute('data-path')).then(function(){
+          var p=this.parentElement.parentElement.getAttribute('data-path')
+          fs.delete(p).then(function(){
+            if(p==opentext){
+              opentext=null;
+              document.querySelector("#editor").innerHTML='';
+              document.querySelector(".guide").style.display='flex';
+              document.querySelector(".topbar .title").innerHTML='';
+            }
             xr();
           })
         }
@@ -658,6 +678,7 @@ document.addEventListener('click',function(){
 })
 var opentext=null;
 function openTxt(path){
+  if(opentext)saveTxt();
   document.querySelector(".guide").style.display='none';
   fs.readFile(path).then(function(res){
     res=res||'';
